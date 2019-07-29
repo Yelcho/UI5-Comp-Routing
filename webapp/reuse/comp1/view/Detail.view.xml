@@ -1,0 +1,24 @@
+<mvc:View controllerName="yelcho.reuse.comp1.controller.Detail" 
+  xmlns:mvc="sap.ui.core.mvc" 
+  xmlns="sap.m" 
+  displayBlock="true">
+  <App class="sapUiDP" 
+    id="app">
+    <MessagePage title="Comp1 Detail View" 
+      text="This is the Comp1 Detail view" 
+      enableFormattedText="true" 
+      description="Comp1 Detail {/recipient/name}" 
+      icon="sap-icon://detail-view">
+      <buttons>
+        <Button text="Comp 1 Home" 
+          press=".toHome" />
+        <Button text="Comp 1 Button 1" 
+          press=".toReuseComp1" />
+        <Button text="Comp 1 Button 2" 
+          press=".toReuseComp2" />
+        <Button text="Comp 1 View 1" 
+          press=".toView1" />
+      </buttons>
+    </MessagePage>
+  </App>
+</mvc:View>

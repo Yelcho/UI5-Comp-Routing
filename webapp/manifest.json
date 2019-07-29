@@ -1,0 +1,129 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "yelcho.mydemo.comprouting",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "yelcho.mydemo.comprouting.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"componentUsages": {
+			"reusecomp1": {
+				"name": "yelcho.reuse.comp1",
+				"settings": {},
+				"componentData": {
+					"parentName": "yelcho.mydemo.comprouting.Component"
+				},
+				"lazy": true
+			},
+			"reusecomp2": {
+				"name": "yelcho.reuse.comp2",
+				"settings": {},
+				"componentData": {
+					"parentName": "yelcho.mydemo.comprouting.Component"
+				},
+				"lazy": true
+			}
+		},
+		"dependencies": {
+			"minUI5Version": "1.65",
+			"libs": {
+				"sap.m": {}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "yelcho.mydemo.comprouting.i18n.i18n"
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "yelcho.mydemo.comprouting.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"transition": "slide",
+				"bypassed": {
+					"target": "notFound"
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"name": "home",
+					"pattern": "",
+					"target": "home"
+				},
+				{
+					"name": "comp1",
+					"pattern": "detail",
+					"target": {
+						"name": "reusecomp1",
+						"prefix": "c1"
+					}
+				},
+				{
+					"name": "comp2",
+					"pattern": "detail2",
+					"target": {
+						"name": "reusecomp2",
+						"prefix": "c2"
+					}
+				}
+			],
+			"targets": {
+				"home": {
+					"viewId": "home",
+					"viewName": "Home",
+					"viewLevel": 1
+				},
+				"reusecomp1": {
+					"type": "Component",
+					"usage": "reusecomp1",
+					"options": {},
+					"containerOptions": {}
+				},
+				"reusecomp2": {
+					"type": "Component",
+					"usage": "reusecomp2",
+					"options": {},
+					"containerOptions": {}
+				},
+				"notFound": {
+					"viewId": "notFound",
+					"viewName": "NotFound",
+					"transition": "show"
+				}
+			}
+		}
+	}
+}

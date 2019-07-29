@@ -1,0 +1,81 @@
+<mvc:View controllerName="yelcho.mydemo.comprouting.controller.App" 
+  xmlns="sap.m" 
+  xmlns:mvc="sap.ui.core.mvc" 
+  xmlns:tnt="sap.tnt" 
+  displayBlock="true">
+  <tnt:ToolPage id="toolPage">
+    <tnt:header>
+      <tnt:ToolHeader>
+        <Button id="sideNavigationToggleButton" 
+          icon="sap-icon://menu2" 
+          type="Transparent" 
+          press="onSideNavButtonPress">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="NeverOverflow" />
+          </layoutData>
+        </Button>
+        <ToolbarSpacer width="20px" />
+        <Button text="File" 
+          type="Transparent">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="Low" />
+          </layoutData>
+        </Button>
+        <Button text="Edit" 
+          type="Transparent">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="Low" />
+          </layoutData>
+        </Button>
+        <tnt:ToolHeaderUtilitySeparator />
+        <ToolbarSpacer width="20px" />
+        <ToolbarSpacer />
+        <FormattedText htmlText='&lt;h3&gt;Main App&lt;/h3&gt;' />
+        <!--                 <tnt:ToolHeaderUtilitySeparator /> -->
+        <ToolbarSpacer>
+          <layoutData>
+            <OverflowToolbarLayoutData priority="NeverOverflow" 
+              minWidth="20px" />
+          </layoutData>
+        </ToolbarSpacer>
+        <Button text="{/recipient/name}" 
+          type="Transparent" 
+          press="handleUserNamePress">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="NeverOverflow" />
+          </layoutData>
+        </Button>
+      </tnt:ToolHeader>
+    </tnt:header>
+    <tnt:sideContent>
+      <tnt:SideNavigation expanded="false" 
+        selectedKey="{appModel>/selectedKey}" 
+        itemSelect=".onItemSelect">
+        <tnt:NavigationList items="{path: 'appModel>/navigation'}">
+          <tnt:NavigationListItem text="{appModel>title}" 
+            icon="{appModel>icon}" 
+            enabled="{appModel>enabled}" 
+            expanded="{appModel>expanded}" 
+            items="{path:'appModel>items',templateShareable: false}" 
+            key="{appModel>key}">
+            <tnt:NavigationListItem text="{appModel>title}" 
+              key="{appModel>key}" 
+              enabled="{appModel>enabled}">
+            </tnt:NavigationListItem>
+          </tnt:NavigationListItem>
+        </tnt:NavigationList>
+        <tnt:fixedItem>
+          <tnt:NavigationList items="{path: 'appModel>/fixedNavigation'}">
+            <tnt:NavigationListItem text="{appModel>title}" 
+              icon="{appModel>icon}">
+            </tnt:NavigationListItem>
+          </tnt:NavigationList>
+        </tnt:fixedItem>
+      </tnt:SideNavigation>
+    </tnt:sideContent>
+    <tnt:mainContents>
+      <App class="sapUiDP" 
+        id="app" />
+    </tnt:mainContents>
+  </tnt:ToolPage>
+</mvc:View>

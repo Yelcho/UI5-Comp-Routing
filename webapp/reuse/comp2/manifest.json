@@ -1,0 +1,98 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "yelcho.reuse.comp2",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "yelcho.reuse.comp2.view.Detail",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"componentUsages": {},
+		"dependencies": {
+			"minUI5Version": "1.65",
+			"libs": {
+				"sap.m": {}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "yelcho.reuse.comp2.i18n.i18n"
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "yelcho.reuse.comp2.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"transition": "slide",
+				"bypassed": {
+					"target": "notFound"
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"name": "home1",
+					"pattern": "",
+					"target": "detail"
+				},
+				{
+					"name": "detail",
+					"pattern": "detail",
+					"target": "detail"
+				},
+				{
+					"name": "view1",
+					"pattern": "view1",
+					"target": "view1"
+				}
+			],
+			"targets": {
+				"detail": {
+					"viewId": "detail",
+					"viewName": "Detail",
+					"viewLevel": 1
+				},
+				"view1": {
+					"viewId": "view1",
+					"viewName": "view1"
+				},
+				"notFound": {
+					"viewId": "notFound",
+					"viewName": "NotFound",
+					"transition": "show"
+				}
+			}
+		}
+	}
+}
