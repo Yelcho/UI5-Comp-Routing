@@ -1,7 +1,7 @@
 {
 	"_version": "1.8.0",
 	"sap.app": {
-		"id": "yelcho.reuse.comp1",
+		"id": "yelcho.reuse.component2",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"title": "{{appTitle}}",
@@ -20,7 +20,7 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "yelcho.reuse.comp1.view.Detail",
+			"viewName": "yelcho.reuse.component2.view.Default",
 			"type": "XML",
 			"async": true,
 			"id": "app"
@@ -36,7 +36,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "yelcho.reuse.comp1.i18n.i18n"
+					"bundleName": "yelcho.reuse.component2.i18n.i18n"
 				}
 			}
 		},
@@ -51,7 +51,7 @@
 			"config": {
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
-				"viewPath": "yelcho.reuse.comp1.view",
+				"viewPath": "yelcho.reuse.component2.view",
 				"controlId": "app",
 				"controlAggregation": "pages",
 				"transition": "slide",
@@ -62,14 +62,9 @@
 			},
 			"routes": [
 				{
-					"name": "home1",
+					"name": "default",
 					"pattern": "",
-					"target": "detail"
-				},
-				{
-					"name": "detail",
-					"pattern": "detail",
-					"target": "detail"
+					"target": "default"
 				},
 				{
 					"name": "view1",
@@ -78,10 +73,9 @@
 				}
 			],
 			"targets": {
-				"detail": {
-					"viewId": "detail",
-					"viewName": "Detail",
-					"viewLevel": 1
+				"default": {
+					"viewId": "default",
+					"viewName": "Default"
 				},
 				"view1": {
 					"viewId": "view1",

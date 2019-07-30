@@ -2,7 +2,7 @@ sap.ui.define(
 	["sap/ui/core/UIComponent", "sap/ui/model/json/JSONModel"],
 	function(UIComponent, JSONModel) {
 		"use strict"
-		return UIComponent.extend("yelcho.reuse.comp1.Component", {
+		return UIComponent.extend("yelcho.reuse.component2.Component", {
 			metadata: {
 				manifest: "json"
 			},
@@ -12,15 +12,6 @@ sap.ui.define(
 
 				// create the views based on the url/hash
 				this.getRouter().initialize()
-
-				// set data model
-				var oData = {
-					recipient: {
-						name: "Graham Robbo Comp 1"
-					}
-				}
-				var oModel = new JSONModel(oData)
-				this.setModel(oModel)
 			},
 			getMainRouter: function() {
 				let component = this.oContainer.getParent()
