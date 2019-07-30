@@ -2,8 +2,8 @@
   xmlns:mvc="sap.ui.core.mvc" 
   xmlns="sap.m" 
   displayBlock="true">
-  <MessagePage title="Home View" 
-    text="This is the Home view" 
+  <MessagePage title="{i18n>homePageTitle}" 
+    text="This is the {i18n>homePageTitle} view" 
     enableFormattedText="true" 
     description="Welcome Home {/recipient/name}" 
     icon="sap-icon://home">

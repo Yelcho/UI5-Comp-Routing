@@ -103,8 +103,7 @@
 			"targets": {
 				"home": {
 					"viewId": "home",
-					"viewName": "Home",
-					"viewLevel": 1
+					"viewName": "Home"
 				},
 				"reusecomp1": {
 					"type": "Component",
