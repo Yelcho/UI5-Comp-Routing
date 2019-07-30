@@ -3,5 +3,5 @@
   <MessagePage title="{i18n>detailViewTitle} Not Found" 
     text="This resource was not found" 
     description="Check your code" 
-    class="myMessagePage" />
+    class="messagePage1" />
 </mvc:View>

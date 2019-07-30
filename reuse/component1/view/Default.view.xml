@@ -7,9 +7,9 @@
     <MessagePage title="{i18n>defaultViewTitle}" 
       text="This is {i18n>appTitle} {i18n>defaultViewTitle}" 
       enableFormattedText="true" 
-      description="Welcome" 
+      description="Welcome {/recipient/name}" 
       icon="sap-icon://detail-view" 
-      class="myMessagePage">
+      class="messagePage1">
       <buttons>
         <Button text="Go to {i18n>view1Title}" 
           press=".toView1" />

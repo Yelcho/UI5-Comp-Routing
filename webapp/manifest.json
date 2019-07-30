@@ -26,19 +26,19 @@
 			"id": "app"
 		},
 		"componentUsages": {
-			"reusecomp1": {
-				"name": "yelcho.reuse.comp1",
+			"usageComponent1": {
+				"name": "yelcho.reuse.component1",
 				"settings": {},
 				"componentData": {
-					"parentName": "yelcho.mydemo.comprouting.Component"
+					"parentComponentName": "yelcho.mydemo.comprouting.Component"
 				},
 				"lazy": true
 			},
-			"reusecomp2": {
-				"name": "yelcho.reuse.comp2",
+			"usageComponent2": {
+				"name": "yelcho.reuse.component2",
 				"settings": {},
 				"componentData": {
-					"parentName": "yelcho.mydemo.comprouting.Component"
+					"parentComponentName": "yelcho.mydemo.comprouting.Component"
 				},
 				"lazy": true
 			}
@@ -107,13 +107,13 @@
 				},
 				"reusecomp1": {
 					"type": "Component",
-					"usage": "reusecomp1",
+					"usage": "usageComponent1",
 					"options": {},
 					"containerOptions": {}
 				},
 				"reusecomp2": {
 					"type": "Component",
-					"usage": "reusecomp2",
+					"usage": "usageComponent2",
 					"options": {},
 					"containerOptions": {}
 				},
