@@ -85,7 +85,7 @@
 				},
 				{
 					"name": "comp1",
-					"pattern": "detail/:arg1:/:arg2:",
+					"pattern": "detail/:arg1:",
 					"target": {
 						"name": "reusecomp1",
 						"prefix": "c1"

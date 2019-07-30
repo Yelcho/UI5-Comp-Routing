@@ -19,7 +19,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 			Log.info(this.getView().getControllerName(), `onItemSelect Key=${key}`)
 			this.getOwnerComponent()
 				.getRouter()
-				.navTo(key, key === "comp1" ? { arg1: "test1", arg2: "test2" } : {})
+				.navTo(key, key === "comp1" ? { arg1: "test1" } : {})
 		}
 	})
 })

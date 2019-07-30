@@ -63,7 +63,12 @@
 			"routes": [
 				{
 					"name": "default",
-					"pattern": "",
+					"pattern": ":arg1:",
+					"target": "default"
+				},
+				{
+					"name": "detail",
+					"pattern": "detail/:arg1:",
 					"target": "default"
 				},
 				{
