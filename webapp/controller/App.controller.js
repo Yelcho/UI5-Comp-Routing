@@ -15,13 +15,11 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 			Log.info(this.getView().getControllerName(), "onUserNamePress")
 		},
 		onItemSelect: function(oEvent) {
-			Log.info(
-				this.getView().getControllerName(),
-				`onItemSelect Key=${oEvent.getParameter("item").getKey()}`
-			)
+			const key = oEvent.getParameter("item").getKey()
+			Log.info(this.getView().getControllerName(), `onItemSelect Key=${key}`)
 			this.getOwnerComponent()
 				.getRouter()
-				.navTo(oEvent.getParameter("item").getKey())
+				.navTo(key, key === "comp1" ? { arg1: "test1", arg2: "test2" } : {})
 		}
 	})
 })
