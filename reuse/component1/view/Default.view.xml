@@ -1,4 +1,4 @@
-<mvc:View controllerName="yelcho.reuse.comp1.controller.Default" 
+<mvc:View controllerName="yelcho.reuse.component1.controller.Default" 
   xmlns:core="sap.ui.core" 
   xmlns:mvc="sap.ui.core.mvc" 
   xmlns="sap.m" 

@@ -1,4 +1,4 @@
-<mvc:View controllerName="yelcho.reuse.comp1.controller.View1" 
+<mvc:View controllerName="yelcho.reuse.component1.controller.View1" 
   xmlns="sap.m" 
   xmlns:mvc="sap.ui.core.mvc">
   <MessagePage title="{i18n>view1Title}" 

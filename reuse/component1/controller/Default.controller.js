@@ -1,12 +1,12 @@
 sap.ui.define(["yelcho/reuse/BaseController"], function(Controller) {
 	"use strict"
-	return Controller.extend("yelcho.reuse.comp1.controller.View1", {
+	return Controller.extend("yelcho.reuse.component1.controller.Default", {
 		onInit: function() {
 			Controller.prototype.onInit.apply(this, arguments)
 
 			this.getOwnerComponent()
 				.getRouter()
-				.getRoute("view1")
+				.getRoute("default")
 				.attachPatternMatched(this._onPatternMatched, this)
 		}
 	})
