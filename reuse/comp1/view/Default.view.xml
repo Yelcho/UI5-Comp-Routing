@@ -1,0 +1,20 @@
+<mvc:View controllerName="yelcho.reuse.comp1.controller.Default" 
+  xmlns:core="sap.ui.core" 
+  xmlns:mvc="sap.ui.core.mvc" 
+  xmlns="sap.m" 
+  displayBlock="true">
+  <App id="app">
+    <MessagePage title="{i18n>defaultViewTitle}" 
+      text="This is {i18n>appTitle} {i18n>defaultViewTitle}" 
+      enableFormattedText="true" 
+      description="Welcome" 
+      icon="sap-icon://detail-view" 
+      class="myMessagePage">
+      <buttons>
+        <Button text="Go to {i18n>view1Title}" 
+          press=".toView1" />
+        <!-- <core:Fragment fragmentName="yelcho.reuse.fragments.navButtons" type="XML" /> -->
+      </buttons>
+    </MessagePage>
+  </App>
+</mvc:View>
