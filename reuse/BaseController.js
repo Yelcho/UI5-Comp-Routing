@@ -28,7 +28,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 			Log.info(this.getView().getControllerName(), `toHome`)
 			this.getOwnerComponent()
 				.getMainRouter()
-				.navTo("default")
+				.navTo("home")
 		},
 		toReuseComp1: function() {
 			Log.info(this.getView().getControllerName(), `toReuseComp1`)

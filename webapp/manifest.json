@@ -107,15 +107,11 @@
 				},
 				"reusecomp1": {
 					"type": "Component",
-					"usage": "usageComponent1",
-					"options": {},
-					"containerOptions": {}
+					"usage": "usageComponent1"
 				},
 				"reusecomp2": {
 					"type": "Component",
-					"usage": "usageComponent2",
-					"options": {},
-					"containerOptions": {}
+					"usage": "usageComponent2"
 				},
 				"notFound": {
 					"viewId": "notFound",

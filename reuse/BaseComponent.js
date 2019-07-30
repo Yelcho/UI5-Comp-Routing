@@ -9,7 +9,8 @@ sap.ui.define(["sap/ui/core/UIComponent"], function(UIComponent) {
 			while (oElement && !this._mainRouter) {
 				try {
 					if (
-						oElement.getMetadata().getName() === this.oComponentData.parentName
+						oElement.getMetadata().getName() ===
+						this.oComponentData.parentComponentName
 					) {
 						this._mainRouter = oElement.getRouter()
 					}
