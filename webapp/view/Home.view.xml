@@ -2,10 +2,10 @@
   xmlns:mvc="sap.ui.core.mvc" 
   xmlns="sap.m" 
   displayBlock="true">
-  <MessagePage title="{i18n>homePageTitle}" 
+  <MessagePage title="{i18n>homePageTitle} {/Name}" 
     text="This is the {i18n>homePageTitle} view" 
     enableFormattedText="true" 
-    description="Welcome Home {/recipient/name}" 
+    description="Welcome Home {jsonModel>/recipient/name}" 
     icon="sap-icon://home">
     <buttons>
       <Button text="Nav to reuse component 1" 
@@ -14,4 +14,47 @@
         press=".toReuseComp2" />
     </buttons>
   </MessagePage>
+  <!-- <Table inset="false" items="{
+			path: '/Customers',
+			sorter: {
+				path: 'Name'
+			}
+		}">
+    <headerToolbar>
+      <OverflowToolbar>
+        <content>
+          <Title text="Customers" level="H2" />
+          <ToolbarSpacer />
+        </content>
+      </OverflowToolbar>
+    </headerToolbar>
+    <columns>
+      <Column width="12em">
+        <Text text="Id" />
+      </Column>
+      <Column minScreenWidth="Tablet" demandPopin="true">
+        <Text text="Name" />
+      </Column>
+      <Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+        <Text text="Street" />
+      </Column>
+      <Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+        <Text text="City" />
+      </Column>
+      <Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+        <Text text="Postcode" />
+      </Column>
+    </columns>
+    <items>
+      <ColumnListItem>
+        <cells>
+          <Text text="{CustomerId}" />
+          <Text text="{Name}" />
+          <Text text="{Street}" />
+          <Text text="{City}" />
+          <Text text="{PostCode}" />
+        </cells>
+      </ColumnListItem>
+    </items>
+  </Table> -->
 </mvc:View>
