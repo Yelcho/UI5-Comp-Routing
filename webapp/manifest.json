@@ -8,7 +8,8 @@
 		"description": "{{appDescription}}",
 		"applicationVersion": {
 			"version": "1.0.0"
-		}
+		},
+		"dataSources": {}
 	},
 	"sap.ui": {
 		"technology": "UI5",
@@ -85,7 +86,7 @@
 				},
 				{
 					"name": "comp1",
-					"pattern": "detail",
+					"pattern": "detail/:arg1:/:arg2:",
 					"target": {
 						"name": "reusecomp1",
 						"prefix": "c1"

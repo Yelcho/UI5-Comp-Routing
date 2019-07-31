@@ -12,6 +12,9 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 		_onPatternMatched: function(oEvent) {
 			Log.info(this.getView().getControllerName(), "_onPatternMatched")
 		},
+		_onRouteMatched: function(oEvent) {
+			Log.info(this.getView().getControllerName(), "_onRouteMatched")
+		},
 		toDefault: function() {
 			Log.info(this.getView().getControllerName(), `toDefault`)
 			this.getOwnerComponent()

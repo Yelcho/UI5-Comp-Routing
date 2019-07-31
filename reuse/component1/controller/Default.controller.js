@@ -6,6 +6,10 @@ sap.ui.define(["yelcho/reuse/BaseController"], function(Controller) {
 
 			this.getOwnerComponent()
 				.getRouter()
+				.attachRouteMatched(this._onRouteMatched, this)
+
+			this.getOwnerComponent()
+				.getRouter()
 				.getRoute("default")
 				.attachPatternMatched(this._onPatternMatched, this)
 		}
