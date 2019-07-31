@@ -4,20 +4,36 @@ sap.ui.define(["sap/ui/core/UIComponent"], function(UIComponent) {
 		init: function() {
 			UIComponent.prototype.init.apply(this, arguments)
 		},
-		getMainRouter: function() {
-			let oElement = this.oContainer.getParent()
-			while (oElement && !this._mainRouter) {
+		getMainComponent: function() {
+			/*
+			Name of main component is defined in componentData of componentUsages
+			in main component manifest. For example ...
+
+			"componentUsages": {
+				"myreuse": {
+					"name": "reuse.component1",
+					"componentData": {
+						"parentComponentName": "mydemo.Component"
+					}
+				}
+
+			*/
+			let oElement = this.oContainer
+			while (oElement && !this._mainComponent) {
 				try {
+					oElement = oElement.getParent()
 					if (
 						oElement.getMetadata().getName() ===
 						this.oComponentData.parentComponentName
 					) {
-						this._mainRouter = oElement.getRouter()
+						this._mainComponent = oElement
 					}
 				} catch {}
-				oElement = oElement.getParent()
 			}
-			return this._mainRouter
+			return this._mainComponent ? this._mainComponent : this
+		},
+		getMainRouter: function() {
+			return this.getMainComponent().getRouter()
 		}
 	})
 })
