@@ -1,0 +1,63 @@
+<mvc:View controllerName="yelcho.mydemo.comprouting.controller.DealerDetail" 
+  xmlns:mvc="sap.ui.core.mvc" 
+  xmlns="sap.m" 
+  xmlns:l="sap.ui.layout" 
+  xmlns:f="sap.ui.layout.form" 
+  xmlns:core="sap.ui.core" 
+  displayBlock="true">
+  <Page id="page" 
+    showHeader="true" 
+    showNavButton="true" 
+    enableScrolling="true" 
+    navButtonPress="onNavButtonPress">
+    <VBox class="sapUiSmallMargin">
+      <f:Form id="FormDisplay354" 
+        editable="false">
+        <f:title>
+          <core:Title text="Dealer {Id}-{Name}" />
+        </f:title>
+        <f:layout>
+          <f:ResponsiveGridLayout labelSpanXL="3" 
+            labelSpanL="3" 
+            labelSpanM="3" 
+            labelSpanS="12" 
+            adjustLabelSpan="false" 
+            emptySpanXL="4" 
+            emptySpanL="4" 
+            emptySpanM="4" 
+            emptySpanS="0" 
+            columnsXL="1" 
+            columnsL="1" 
+            columnsM="1" 
+            singleContainerFullSize="false" />
+        </f:layout>
+        <f:formContainers>
+          <f:FormContainer>
+            <f:formElements>
+              <f:FormElement label="Name">
+                <f:fields>
+                  <Text text="{Name}" />
+                </f:fields>
+              </f:FormElement>
+              <f:FormElement label="Street">
+                <f:fields>
+                  <Text text="{Street}" />
+                </f:fields>
+              </f:FormElement>
+              <f:FormElement label="ZIP Code/City">
+                <f:fields>
+                  <Text text="{PostCode} {City}" />
+                </f:fields>
+              </f:FormElement>
+              <f:FormElement label="State">
+                <f:fields>
+                  <Text text="{State}" />
+                </f:fields>
+              </f:FormElement>
+            </f:formElements>
+          </f:FormContainer>
+        </f:formContainers>
+      </f:Form>
+    </VBox>
+  </Page>
+</mvc:View>

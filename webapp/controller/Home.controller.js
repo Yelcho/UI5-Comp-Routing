@@ -25,38 +25,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 		},
 		_onPatternMatched: function() {
 			Log.info(this.getView().getControllerName(), "_onPatternMatched")
-			var sObjectId = "100000010"
-			this.getView()
-				.getModel()
-				.metadataLoaded()
-				.then(
-					function() {
-						Log.info(this.getView().getControllerName(), "metadataLoaded")
-						var sObjectPath = this.getView()
-							.getModel()
-							.createKey("Customers", {
-								CustomerId: sObjectId
-							})
-
-						this.getView().bindElement({
-							path: sObjectPath,
-							// parameters: {
-							// 	expand: "SalesOrders"
-							// },
-							events: {
-								change: function() {
-									Log.info(this.getView().getControllerName(), "change")
-								}.bind(this),
-								dataRequested: function() {
-									Log.info(this.getView().getControllerName(), "dataRequested")
-								}.bind(this),
-								dataReceived: function() {
-									Log.info(this.getView().getControllerName(), "dataReceived")
-								}.bind(this)
-							}
-						})
-					}.bind(this)
-				)
 		},
 		_onBypassed: function(oEvent) {
 			Log.info(

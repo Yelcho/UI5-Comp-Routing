@@ -13,7 +13,7 @@
         <ToolbarSpacer />
         <FormattedText htmlText='&lt;h3&gt;{i18n>appTitle}&lt;/h3&gt;' />
         <ToolbarSpacer />
-        <Button text="{jsonModel>/recipient/name}" 
+        <Button text="{FullName}" 
           type="Transparent" 
           press="onUserNamePress" />
       </tnt:ToolHeader>
@@ -31,6 +31,9 @@
           <tnt:NavigationListItem text="Reuse Component 2" 
             icon="sap-icon://open-command-field" 
             key="comp2" />
+          <tnt:NavigationListItem text="Dealers" 
+            icon="sap-icon://group" 
+            key="dealers" />
         </tnt:NavigationList>
       </tnt:SideNavigation>
     </tnt:sideContent>

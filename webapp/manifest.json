@@ -9,7 +9,15 @@
 		"applicationVersion": {
 			"version": "1.0.0"
 		},
-		"dataSources": {}
+		"dataSources": {
+			"dealerPortalRemote": {
+				"uri": "/sap/opu/odata/sap/YDPN",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
+		}
 	},
 	"sap.ui": {
 		"technology": "UI5",
@@ -56,6 +64,10 @@
 				"settings": {
 					"bundleName": "yelcho.mydemo.comprouting.i18n.i18n"
 				}
+			},
+			"": {
+				"dataSource": "dealerPortalRemote",
+				"defaultBindingMode": "TwoWay"
 			}
 		},
 		"resources": {
@@ -99,12 +111,30 @@
 						"name": "reusecomp2",
 						"prefix": "c2"
 					}
+				},
+				{
+					"name": "dealers",
+					"pattern": "dealers",
+					"target": "dealers"
+				},
+				{
+					"name": "dealerDetail",
+					"pattern": "dealers/{dealerId}",
+					"target": "dealerDetail"
 				}
 			],
 			"targets": {
 				"home": {
 					"viewId": "home",
 					"viewName": "Home"
+				},
+				"dealers": {
+					"viewId": "dealers",
+					"viewName": "Dealers"
+				},
+				"dealerDetail": {
+					"viewId": "dealerDetail",
+					"viewName": "DealerDetail"
 				},
 				"reusecomp1": {
 					"type": "Component",

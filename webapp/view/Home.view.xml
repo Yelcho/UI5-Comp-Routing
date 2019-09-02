@@ -5,7 +5,7 @@
   <MessagePage title="{i18n>homePageTitle} {/Name}" 
     text="This is the {i18n>homePageTitle} view" 
     enableFormattedText="true" 
-    description="Welcome Home {jsonModel>/recipient/name}" 
+    description="Welcome Home {FullName}" 
     icon="sap-icon://home">
     <buttons>
       <Button text="Nav to reuse component 1" 
