@@ -3,27 +3,23 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 	Log
 ) {
 	"use strict"
-	return Controller.extend("yelcho.mydemo.comprouting.controller.App", {
+	return Controller.extend("yelcho.mydemo.userSettings.controller.App", {
 		onInit: function() {
 			Log.info(this.getView().getControllerName(), "onInit")
 
 			this.getView()
-				.getModel("userData")
+				.getModel()
 				.metadataLoaded()
 				.then(this._bindUserData.bind(this))
 		},
 		_bindUserData: function() {
 			Log.info(this.getView().getControllerName(), "_bindUserData")
 			var sObjectPath = this.getView()
-				.getModel("userData")
+				.getModel()
 				.createKey("Users", { Id: "SY-UNAME" })
 
 			this.getView().bindElement({
-				model: "userData",
 				path: "/" + sObjectPath,
-				// parameters: {
-				// 	expand: "Dealers"
-				// },
 				events: {
 					change: function() {
 						Log.info(this.getView().getControllerName(), "_bindUserData change")
@@ -42,20 +38,6 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 					}.bind(this)
 				}
 			})
-		},
-		onSideNavButtonPress: function() {
-			var toolPage = this.byId("toolPage")
-			toolPage.setSideExpanded(!toolPage.getSideExpanded())
-		},
-		onUserNamePress: function() {
-			Log.info(this.getView().getControllerName(), "onUserNamePress")
-		},
-		onItemSelect: function(oEvent) {
-			const key = oEvent.getParameter("item").getKey()
-			Log.info(this.getView().getControllerName(), `onItemSelect Key=${key}`)
-			this.getOwnerComponent()
-				.getRouter()
-				.navTo(key)
 		}
 	})
 })

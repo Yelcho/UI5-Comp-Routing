@@ -13,7 +13,7 @@
     enableScrolling="true">
     <Table inset="false" 
       busyIndicatorDelay="0" 
-      items="{Dealers}">
+      items="{userData>Dealers}">
       <headerToolbar>
         <OverflowToolbar>
           <content>
@@ -51,11 +51,11 @@
         <ColumnListItem type="Navigation" 
           press="onPressDealer">
           <cells>
-            <Text text="{Id}" />
-            <Text text="{Name}" />
-            <Text text="{Street}" />
-            <Text text="{City}" />
-            <Text text="{PostCode}" />
+            <Text text="{userData>Id}" />
+            <Text text="{userData>Name}" />
+            <Text text="{userData>Street}" />
+            <Text text="{userData>City}" />
+            <Text text="{userData>PostCode}" />
           </cells>
         </ColumnListItem>
       </items>

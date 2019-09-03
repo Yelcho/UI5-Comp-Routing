@@ -16,6 +16,13 @@
 				"settings": {
 					"odataVersion": "2.0"
 				}
+			},
+			"northwind": {
+				"uri": "https://cors-anywhere.herokuapp.com/https://services.odata.org/V2/OData/OData.svc",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
 			}
 		}
 	},
@@ -50,6 +57,14 @@
 					"parentComponentName": "yelcho.mydemo.comprouting.Component"
 				},
 				"lazy": true
+			},
+			"userSettingsComponent": {
+				"name": "yelcho.reuse.userSettings",
+				"settings": {},
+				"componentData": {
+					"parentComponentName": "yelcho.mydemo.comprouting.Component"
+				},
+				"lazy": true
 			}
 		},
 		"dependencies": {
@@ -65,9 +80,21 @@
 					"bundleName": "yelcho.mydemo.comprouting.i18n.i18n"
 				}
 			},
-			"": {
+			"userData": {
 				"dataSource": "dealerPortalRemote",
-				"defaultBindingMode": "TwoWay"
+				"defaultBindingMode": "TwoWay",
+				"settings": {
+					"useBatch": false,
+					"defaultCountMode": "Inline"
+				}
+			},
+			"": {
+				"dataSource": "northwind",
+				"defaultBindingMode": "TwoWay",
+				"settings": {
+					"useBatch": false,
+					"defaultCountMode": "Inline"
+				}
 			}
 		},
 		"resources": {
@@ -113,6 +140,14 @@
 					}
 				},
 				{
+					"name": "userSettings",
+					"pattern": "userSettings",
+					"target": {
+						"name": "userSettings",
+						"prefix": "us"
+					}
+				},
+				{
 					"name": "dealers",
 					"pattern": "dealers",
 					"target": "dealers"
@@ -143,6 +178,10 @@
 				"reusecomp2": {
 					"type": "Component",
 					"usage": "usageComponent2"
+				},
+				"userSettings": {
+					"type": "Component",
+					"usage": "userSettingsComponent"
 				},
 				"notFound": {
 					"viewId": "notFound",

@@ -13,7 +13,7 @@
         <ToolbarSpacer />
         <FormattedText htmlText='&lt;h3&gt;{i18n>appTitle}&lt;/h3&gt;' />
         <ToolbarSpacer />
-        <Button text="{FullName}" 
+        <Button text="{userData>FullName}" 
           type="Transparent" 
           press="onUserNamePress" />
       </tnt:ToolHeader>
@@ -34,6 +34,9 @@
           <tnt:NavigationListItem text="Dealers" 
             icon="sap-icon://group" 
             key="dealers" />
+          <tnt:NavigationListItem text="User Settings" 
+            icon="sap-icon://key-user-settings" 
+            key="userSettings" />
         </tnt:NavigationList>
       </tnt:SideNavigation>
     </tnt:sideContent>

@@ -3,19 +3,19 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 	Log
 ) {
 	"use strict"
-	return Controller.extend("yelcho.mydemo.comprouting.controller.Dealers", {
+	return Controller.extend("yelcho.reuse.userSettings.controller.List", {
 		onInit: function() {
 			Log.info(this.getView().getControllerName(), "onInit")
 		},
-		onPressDealer: function(oEvent) {
-			const oDealer = oEvent
+		onPressSetting: function(oEvent) {
+			const oSetting = oEvent
 				.getSource()
-				.getBindingContext("userData")
+				.getBindingContext()
 				.getObject()
 			this.getOwnerComponent()
 				.getRouter()
-				.navTo("dealerDetail", {
-					dealerId: oDealer.Id
+				.navTo("detail", {
+					name: oSetting.Name
 				})
 		}
 	})

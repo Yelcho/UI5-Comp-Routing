@@ -1,0 +1,46 @@
+<mvc:View controllerName="yelcho.reuse.userSettings.controller.List" 
+  xmlns:mvc="sap.ui.core.mvc" 
+  xmlns="sap.m" 
+  displayBlock="true">
+  <Page id="page" 
+    showHeader="false" 
+    enableScrolling="true">
+    <Table inset="false" 
+      busyIndicatorDelay="0" 
+      items="{UserSettings}">
+      <headerToolbar>
+        <OverflowToolbar>
+          <content>
+            <Title text="User Settings" 
+              level="H2" />
+            <ToolbarSpacer />
+          </content>
+        </OverflowToolbar>
+      </headerToolbar>
+      <columns>
+        <Column minScreenWidth="Tablet" 
+          demandPopin="true">
+          <Text text="Name" />
+        </Column>
+        <Column minScreenWidth="Desktop" 
+          demandPopin="true">
+          <Text text="Description" />
+        </Column>
+        <Column minScreenWidth="Desktop" 
+          demandPopin="true">
+          <Text text="Value" />
+        </Column>
+      </columns>
+      <items>
+        <ColumnListItem type="Navigation" 
+          press="onPressSetting">
+          <cells>
+            <Text text="{Name}" />
+            <Text text="{Description}" />
+            <Text text="{Value}" />
+          </cells>
+        </ColumnListItem>
+      </items>
+    </Table>
+  </Page>
+</mvc:View>

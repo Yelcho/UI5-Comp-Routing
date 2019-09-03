@@ -1,4 +1,4 @@
-<mvc:View controllerName="yelcho.mydemo.comprouting.controller.DealerDetail" 
+<mvc:View controllerName="yelcho.reuse.userSettings.controller.Detail" 
   xmlns:mvc="sap.ui.core.mvc" 
   xmlns="sap.m" 
   xmlns:l="sap.ui.layout" 
@@ -14,7 +14,7 @@
       <f:Form id="FormDisplay354" 
         editable="false">
         <f:title>
-          <core:Title text="Dealer {userData>Id}-{userData>Name}" />
+          <core:Title text="Setting {Name}" />
         </f:title>
         <f:layout>
           <f:ResponsiveGridLayout labelSpanXL="3" 
@@ -36,22 +36,17 @@
             <f:formElements>
               <f:FormElement label="Name">
                 <f:fields>
-                  <Text text="{userData>Name}" />
+                  <Text text="{Name}" />
                 </f:fields>
               </f:FormElement>
-              <f:FormElement label="Street">
+              <f:FormElement label="Description">
                 <f:fields>
-                  <Text text="{userData>Street}" />
+                  <Text text="{Description}" />
                 </f:fields>
               </f:FormElement>
-              <f:FormElement label="ZIP Code/City">
+              <f:FormElement label="Value">
                 <f:fields>
-                  <Text text="{userData>PostCode} {userData>City}" />
-                </f:fields>
-              </f:FormElement>
-              <f:FormElement label="State">
-                <f:fields>
-                  <Text text="{userData>State}" />
+                  <Text text="{Value}" />
                 </f:fields>
               </f:FormElement>
             </f:formElements>

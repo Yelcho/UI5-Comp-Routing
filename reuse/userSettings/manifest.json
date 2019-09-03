@@ -1,0 +1,109 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "yelcho.reuse.userSettings",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {
+			"dealerPortalRemote": {
+				"uri": "/sap/opu/odata/sap/YDPN",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "yelcho.reuse.userSettings.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"componentUsages": {},
+		"dependencies": {
+			"minUI5Version": "1.65",
+			"libs": {
+				"sap.m": {}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "yelcho.reuse.userSettings.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "dealerPortalRemote",
+				"defaultBindingMode": "TwoWay",
+				"settings": {
+					"useBatch": false,
+					"defaultCountMode": "Inline"
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "yelcho.reuse.userSettings.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"transition": "slide",
+				"bypassed": {
+					"target": "notFound"
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"name": "list",
+					"pattern": "",
+					"target": "list"
+				},
+				{
+					"name": "detail",
+					"pattern": "userSetting/{name}",
+					"target": "detail"
+				}
+			],
+			"targets": {
+				"list": {
+					"viewId": "list",
+					"viewName": "List"
+				},
+				"detail": {
+					"viewId": "detail",
+					"viewName": "Detail"
+				},
+				"notFound": {
+					"viewId": "notFound",
+					"viewName": "NotFound",
+					"transition": "show"
+				}
+			}
+		}
+	}
+}

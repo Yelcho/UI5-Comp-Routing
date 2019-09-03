@@ -3,26 +3,33 @@ sap.ui.define(
 	function(Controller, History, Log) {
 		"use strict"
 		return Controller.extend(
-			"yelcho.mydemo.comprouting.controller.DealerDetail",
+			"yelcho.reuse.suppliers.controller.controller.Detail",
 			{
 				onInit: function() {
 					Log.info(this.getView().getControllerName(), "onInit")
 
 					this.getOwnerComponent()
 						.getRouter()
-						.getRoute("dealerDetail")
+						.getRoute("detail")
 						.attachPatternMatched(this._onPatternMatched, this)
 				},
 				_onPatternMatched: function(oEvent) {
 					Log.info(this.getView().getControllerName(), "_onPatternMatched")
 					const args = oEvent.getParameter("arguments")
 
-					var sObjectPath = this.getView()
-						.getModel("userData")
-						.createKey("Dealers", { Id: args.dealerId })
+					this.getOwnerComponent()
+						.getModel()
+						.metadataLoaded()
+						.then(this._bindData.bind(this, args.id))
+				},
+				_bindData: function(id) {
+					Log.info(this.getView().getControllerName(), "_bindData")
+
+					var sObjectPath = this.getOwnerComponent()
+						.getModel()
+						.createKey("Suppliers", { ID: id })
 
 					this.getView().bindElement({
-						model: "userData",
 						path: "/" + sObjectPath,
 						events: {
 							change: function() {
@@ -42,6 +49,10 @@ sap.ui.define(
 									this.getView().getControllerName(),
 									"_onPatternMatched dataReceived"
 								)
+								if (this.getView().getBindingContext() === null)
+									this.getOwnerComponent()
+										.getRouter()
+										.navTo("notfound", false)
 							}.bind(this)
 						}
 					})
@@ -53,7 +64,7 @@ sap.ui.define(
 					else
 						this.getOwnerComponent()
 							.getRouter()
-							.navTo("dealers", true)
+							.navTo("list", true)
 				}
 			}
 		)

@@ -1,4 +1,4 @@
-<mvc:View controllerName="yelcho.mydemo.comprouting.controller.DealerDetail" 
+<mvc:View controllerName="yelcho.reuse.suppliers.controller.Detail" 
   xmlns:mvc="sap.ui.core.mvc" 
   xmlns="sap.m" 
   xmlns:l="sap.ui.layout" 
@@ -9,12 +9,13 @@
     showHeader="true" 
     showNavButton="true" 
     enableScrolling="true" 
+    class="pageBackground" 
     navButtonPress="onNavButtonPress">
     <VBox class="sapUiSmallMargin">
       <f:Form id="FormDisplay354" 
         editable="false">
         <f:title>
-          <core:Title text="Dealer {userData>Id}-{userData>Name}" />
+          <core:Title text="{i18n>detailViewTitle}" />
         </f:title>
         <f:layout>
           <f:ResponsiveGridLayout labelSpanXL="3" 
@@ -34,24 +35,34 @@
         <f:formContainers>
           <f:FormContainer>
             <f:formElements>
+              <f:FormElement label="ID">
+                <f:fields>
+                  <Text text="{ID}" />
+                </f:fields>
+              </f:FormElement>
               <f:FormElement label="Name">
                 <f:fields>
-                  <Text text="{userData>Name}" />
+                  <Text text="{Name}" />
                 </f:fields>
               </f:FormElement>
               <f:FormElement label="Street">
                 <f:fields>
-                  <Text text="{userData>Street}" />
+                  <Text text="{Address/Street}" />
                 </f:fields>
               </f:FormElement>
               <f:FormElement label="ZIP Code/City">
                 <f:fields>
-                  <Text text="{userData>PostCode} {userData>City}" />
+                  <Text text="{Address/ZipCode} {Address/City}" />
                 </f:fields>
               </f:FormElement>
               <f:FormElement label="State">
                 <f:fields>
-                  <Text text="{userData>State}" />
+                  <Text text="{Address/State}" />
+                </f:fields>
+              </f:FormElement>
+              <f:FormElement label="Country">
+                <f:fields>
+                  <Text text="{Address/Country}" />
                 </f:fields>
               </f:FormElement>
             </f:formElements>
