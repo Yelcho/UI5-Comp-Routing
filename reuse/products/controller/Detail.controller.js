@@ -34,6 +34,9 @@ sap.ui.define(
 
 				this.getView().bindElement({
 					path: "/" + sObjectPath,
+					parameters: {
+						expand: "Supplier,Category"
+					},
 					events: {
 						change: function() {
 							Log.info(
@@ -68,6 +71,9 @@ sap.ui.define(
 				)
 
 				return oCurrencyFormat.format(price, "$")
+			},
+			northwindImageFormatter: function(picture) {
+				return picture ? "data:image/bmp;base64," + picture.substr(104) : null
 			},
 			onNavButtonPress: function(oEvent) {
 				var oHistory = History.getInstance()

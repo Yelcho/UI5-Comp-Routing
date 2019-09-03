@@ -57,6 +57,23 @@
               </f:FormElement>
             </f:formElements>
           </f:FormContainer>
+          <f:FormContainer>
+            <f:FormElement label="Category">
+              <f:fields>
+                <Text text="{Category/CategoryName}" />
+              </f:fields>
+            </f:FormElement>
+            <f:FormElement label="Description">
+              <f:fields>
+                <Text text="{Category/Description}" />
+              </f:fields>
+            </f:FormElement>
+            <f:FormElement label="Image">
+              <f:fields>
+                <Image src="{path:'Category/Picture', formatter:'.northwindImageFormatter'}" />
+              </f:fields>
+            </f:FormElement>
+          </f:FormContainer>
         </f:formContainers>
       </f:Form>
     </VBox>

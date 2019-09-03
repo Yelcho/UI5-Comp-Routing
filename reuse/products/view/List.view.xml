@@ -8,7 +8,7 @@
     class="pageBackground">
     <Table inset="false" 
       busyIndicatorDelay="0" 
-      items="{path:'/Products',parameters:{expand:'Category,Supplier'}}">
+      items="{path:'/Products',parameters:{expand:'Supplier'}}">
       <headerToolbar>
         <OverflowToolbar>
           <content>
