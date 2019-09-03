@@ -52,7 +52,8 @@ sap.ui.define(
 							if (this.getView().getBindingContext() === null)
 								this.getOwnerComponent()
 									.getRouter()
-									.navTo("notfound", false)
+									.getTargets()
+									.display("notFound")
 						}.bind(this)
 					}
 				})
