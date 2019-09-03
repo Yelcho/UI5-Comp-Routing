@@ -1,8 +1,13 @@
 sap.ui.define(
-	["sap/ui/core/mvc/Controller", "sap/ui/core/routing/History", "sap/base/Log"],
-	function(Controller, History, Log) {
+	[
+		"sap/ui/core/mvc/Controller",
+		"sap/ui/core/routing/History",
+		"sap/base/Log",
+		"sap/ui/core/format/NumberFormat"
+	],
+	function(Controller, History, Log, NumberFormat) {
 		"use strict"
-		return Controller.extend("yelcho.reuse.suppliers.controller.Detail", {
+		return Controller.extend("yelcho.reuse.products.controller.Detail", {
 			onInit: function() {
 				Log.info(this.getView().getControllerName(), "onInit")
 
@@ -25,7 +30,7 @@ sap.ui.define(
 
 				var sObjectPath = this.getOwnerComponent()
 					.getModel()
-					.createKey("Suppliers", { SupplierID: id })
+					.createKey("Products", { ProductID: id })
 
 				this.getView().bindElement({
 					path: "/" + sObjectPath,
@@ -54,6 +59,15 @@ sap.ui.define(
 						}.bind(this)
 					}
 				})
+			},
+			priceFormatter: function(price) {
+				var oCurrencyFormat = sap.ui.core.format.NumberFormat.getCurrencyInstance(
+					{
+						currencyCode: false
+					}
+				)
+
+				return oCurrencyFormat.format(price, "$")
 			},
 			onNavButtonPress: function(oEvent) {
 				var oHistory = History.getInstance()

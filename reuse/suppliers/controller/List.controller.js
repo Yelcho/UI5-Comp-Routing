@@ -23,7 +23,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 					id: oEvent
 						.getSource()
 						.getBindingContext()
-						.getObject().ID
+						.getObject().SupplierID
 				})
 		}
 	})

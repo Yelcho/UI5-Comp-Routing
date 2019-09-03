@@ -1,4 +1,4 @@
-<mvc:View controllerName="yelcho.reuse.suppliers.controller.List" 
+<mvc:View controllerName="yelcho.reuse.products.controller.List" 
   xmlns:mvc="sap.ui.core.mvc" 
   xmlns="sap.m" 
   displayBlock="true">
@@ -8,7 +8,7 @@
     class="pageBackground">
     <Table inset="false" 
       busyIndicatorDelay="0" 
-      items="{/Suppliers}">
+      items="{path:'/Products',parameters:{expand:'Category,Supplier'}}">
       <headerToolbar>
         <OverflowToolbar>
           <content>
@@ -26,16 +26,20 @@
           <Text text="Name" />
         </Column>
         <Column>
-          <Text text="City" />
+          <Text text="Supplier" />
+        </Column>
+        <Column>
+          <Text text="Price" />
         </Column>
       </columns>
       <items>
         <ColumnListItem type="Navigation" 
           press="onPressListItem">
           <cells>
-            <Text text="{SupplierID}" />
-            <Text text="{CompanyName}" />
-            <Text text="{City}" />
+            <Text text="{ProductID}" />
+            <Text text="{ProductName}" />
+            <Text text="{Supplier/CompanyName}" />
+            <Text text="{path:'UnitPrice', formatter:'.priceFormatter'}" />
           </cells>
         </ColumnListItem>
       </items>

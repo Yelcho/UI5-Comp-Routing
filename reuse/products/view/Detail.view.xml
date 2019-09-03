@@ -1,4 +1,4 @@
-<mvc:View controllerName="yelcho.reuse.suppliers.controller.Detail" 
+<mvc:View controllerName="yelcho.reuse.products.controller.Detail" 
   xmlns:mvc="sap.ui.core.mvc" 
   xmlns="sap.m" 
   xmlns:l="sap.ui.layout" 
@@ -37,37 +37,22 @@
             <f:formElements>
               <f:FormElement label="ID">
                 <f:fields>
-                  <Text text="{SupplierID}" />
+                  <Text text="{ProductID}" />
                 </f:fields>
               </f:FormElement>
               <f:FormElement label="Name">
                 <f:fields>
-                  <Text text="{CompanyName}" />
+                  <Text text="{ProductName}" />
                 </f:fields>
               </f:FormElement>
-              <f:FormElement label="Address">
+              <f:FormElement label="Supplier">
                 <f:fields>
-                  <Text text="{Address}" />
+                  <Text text="{Supplier/CompanyName}" />
                 </f:fields>
               </f:FormElement>
-              <f:FormElement label="ZIP Code/City">
+              <f:FormElement label="Price">
                 <f:fields>
-                  <Text text="{PostalCode} {City}" />
-                </f:fields>
-              </f:FormElement>
-              <f:FormElement label="State">
-                <f:fields>
-                  <Text text="{Region}" />
-                </f:fields>
-              </f:FormElement>
-              <f:FormElement label="Country">
-                <f:fields>
-                  <Text text="{Country}" />
-                </f:fields>
-              </f:FormElement>
-              <f:FormElement label="Phone">
-                <f:fields>
-                  <Text text="{Phone}" />
+                  <Text text="{path:'UnitPrice',formatter:'.priceFormatter'} per {QuantityPerUnit}" />
                 </f:fields>
               </f:FormElement>
             </f:formElements>
