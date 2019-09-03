@@ -1,0 +1,114 @@
+{
+	"_version": "2.3.0",
+	"sap.app": {
+		"id": "yelcho.reuse.categories",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "2.03.8"
+		},
+		"dataSources": {
+			"northwind": {
+				"uri": "https://cors-anywhere.herokuapp.com/https://services.odata.org/V2/Northwind/Northwind.svc",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "yelcho.reuse.categories.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"componentUsages": {},
+		"dependencies": {
+			"minUI5Version": "1.69",
+			"libs": {
+				"sap.m": {}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "yelcho.reuse.categories.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "northwind",
+				"defaultBindingMode": "TwoWay",
+				"settings": {
+					"useBatch": false,
+					"defaultCountMode": "Inline"
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "yelcho.reuse.categories.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"transition": "slide",
+				"bypassed": {
+					"target": "notFound"
+				},
+				"async": true
+			},
+			"routes": [
+				{
+					"name": "list",
+					"pattern": "",
+					"target": "list"
+				},
+				{
+					"name": "detail",
+					"pattern": "detail/{id}",
+					"target": "detail"
+				},
+				{
+					"name": "notfound",
+					"pattern": "notFound",
+					"target": "notFound"
+				}
+			],
+			"targets": {
+				"list": {
+					"viewId": "list",
+					"viewName": "List"
+				},
+				"detail": {
+					"viewId": "detail",
+					"viewName": "Detail"
+				},
+				"notFound": {
+					"viewId": "notFound",
+					"viewName": "NotFound",
+					"transition": "show"
+				}
+			}
+		}
+	}
+}
