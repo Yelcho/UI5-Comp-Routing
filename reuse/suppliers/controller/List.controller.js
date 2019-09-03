@@ -16,7 +16,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 			Log.info(this.getView().getControllerName(), "_onPatternMatched")
 			const oRouter = this.getOwnerComponent().getRouter()
 
-			if (oRouter.oHashChanger.parent.hash) {
+			if (
+				oRouter.oHashChanger.parent.hash &&
+				oRouter.oHashChanger.parent.hash.search("/") >= 0
+			) {
 				oRouter.navTo(
 					"detail",
 					{
