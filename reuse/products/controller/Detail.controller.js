@@ -49,12 +49,14 @@ sap.ui.define(
 								this.getView().getControllerName(),
 								"_onPatternMatched dataRequested"
 							)
+							this.getView().setBusy(true)
 						}.bind(this),
 						dataReceived: function() {
 							Log.info(
 								this.getView().getControllerName(),
 								"_onPatternMatched dataReceived"
 							)
+							this.getView().setBusy(false)
 							if (this.getView().getBindingContext() === null)
 								this.getOwnerComponent()
 									.getRouter()
