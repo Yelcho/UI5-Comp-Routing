@@ -80,7 +80,7 @@
 			"routes": [
 				{
 					"name": "list",
-					"pattern": "",
+					"pattern": ":id:",
 					"target": "list"
 				},
 				{

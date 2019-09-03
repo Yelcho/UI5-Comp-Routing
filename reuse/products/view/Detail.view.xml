@@ -48,7 +48,8 @@
               </f:FormElement>
               <f:FormElement label="Supplier">
                 <f:fields>
-                  <Text text="{Supplier/CompanyName}" />
+                  <Link text="{Supplier/CompanyName}" 
+                    press="onPressSupplier" />
                 </f:fields>
               </f:FormElement>
               <f:FormElement label="Price">
@@ -61,7 +62,8 @@
           <f:FormContainer>
             <f:FormElement label="Category">
               <f:fields>
-                <Text text="{Category/CategoryName}" />
+                <Link text="{Category/CategoryName}" 
+                  press="onPressCategory" />
               </f:fields>
             </f:FormElement>
             <f:FormElement label="Description">

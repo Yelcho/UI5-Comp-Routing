@@ -79,6 +79,42 @@ sap.ui.define(
 			northwindImageFormatter: function(picture) {
 				return picture ? "data:image/bmp;base64," + picture.substr(104) : null
 			},
+			onPressSupplier: function(oEvent) {
+				Log.info(
+					this.getView().getControllerName(),
+					"onPressSupplier " +
+						oEvent
+							.getSource()
+							.getBindingContext()
+							.getObject().SupplierID
+				)
+				this.getOwnerComponent()
+					.getRouter()
+					.navTo("suppliers", {
+						id: oEvent
+							.getSource()
+							.getBindingContext()
+							.getObject().SupplierID
+					})
+			},
+			onPressCategory: function(oEvent) {
+				Log.info(
+					this.getView().getControllerName(),
+					"onPressCategory " +
+						oEvent
+							.getSource()
+							.getBindingContext()
+							.getObject().CategoryID
+				)
+				this.getOwnerComponent()
+					.getRouter()
+					.navTo("categories", {
+						id: oEvent
+							.getSource()
+							.getBindingContext()
+							.getObject().CategoryID
+					})
+			},
 			onNavButtonPress: function(oEvent) {
 				var oHistory = History.getInstance()
 				var sPreviousHash = oHistory.getPreviousHash()

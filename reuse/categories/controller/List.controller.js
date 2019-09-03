@@ -14,6 +14,16 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 		},
 		_onPatternMatched: function() {
 			Log.info(this.getView().getControllerName(), "_onPatternMatched")
+			const oRouter = this.getOwnerComponent().getRouter()
+			if (oRouter.oHashChanger.parent.hash) {
+				oRouter.navTo(
+					"detail",
+					{
+						id: oRouter.oHashChanger.parent.hash.split("/")[1]
+					},
+					true
+				)
+			}
 		},
 		onPressListItem: function(oEvent) {
 			Log.info(this.getView().getControllerName(), "onPressListItem")
