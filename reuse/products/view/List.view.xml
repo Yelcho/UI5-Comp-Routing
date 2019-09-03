@@ -5,7 +5,7 @@
   <Page id="page" 
     showHeader="false" 
     enableScrolling="true" 
-    class="pageBackground">
+    class="productsPage">
     <Table inset="false" 
       busyIndicatorDelay="0" 
       items="{path:'/Products',parameters:{expand:'Supplier'}}">

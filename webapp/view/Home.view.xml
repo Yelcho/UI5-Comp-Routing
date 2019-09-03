@@ -5,13 +5,11 @@
   <MessagePage title="{i18n>homePageTitle}" 
     text="This is the {i18n>homePageTitle} view" 
     enableFormattedText="true" 
-    description="Welcome Home {userData>FullName}" 
+    description="Welcome Home {jsonModel>/recipient/name}" 
     icon="sap-icon://home">
-    <buttons>
-      <Button text="Nav to reuse component 1" 
-        press=".toReuseComp1" />
-      <Button text="Nav to reuse component 2" 
-        press=".toReuseComp2" />
-    </buttons>
+    <!-- <buttons>
+      <Button text="Nav to reuse component 1" press=".toReuseComp1" />
+      <Button text="Nav to reuse component 2" press=".toReuseComp2" />
+    </buttons> -->
   </MessagePage>
 </mvc:View>

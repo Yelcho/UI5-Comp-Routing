@@ -13,14 +13,14 @@ sap.ui.define(
 				// create the views based on the url/hash
 				this.getRouter().initialize()
 
-				// // set data model
-				// var oData = {
-				// 	recipient: {
-				// 		name: "Graham Robbo"
-				// 	}
-				// }
-				// var oModel = new JSONModel(oData)
-				// this.setModel(oModel, "jsonModel")
+				// set data model
+				var oData = {
+					recipient: {
+						name: "Graham Robbo"
+					}
+				}
+				var oModel = new JSONModel(oData)
+				this.setModel(oModel, "jsonModel")
 			}
 		})
 	}

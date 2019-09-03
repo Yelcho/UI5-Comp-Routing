@@ -9,22 +9,7 @@
 		"applicationVersion": {
 			"version": "1.0.0"
 		},
-		"dataSources": {
-			"dealerPortalRemote": {
-				"uri": "/sap/opu/odata/sap/YDPN",
-				"type": "OData",
-				"settings": {
-					"odataVersion": "2.0"
-				}
-			},
-			"northwind": {
-				"uri": "https://cors-anywhere.herokuapp.com/https://services.odata.org/V2/OData/OData.svc",
-				"type": "OData",
-				"settings": {
-					"odataVersion": "2.0"
-				}
-			}
-		}
+		"dataSources": {}
 	},
 	"sap.ui": {
 		"technology": "UI5",
@@ -42,24 +27,24 @@
 			"id": "app"
 		},
 		"componentUsages": {
-			"usageComponent1": {
-				"name": "yelcho.reuse.component1",
+			"suppliersComponent": {
+				"name": "yelcho.reuse.suppliers",
 				"settings": {},
 				"componentData": {
 					"parentComponentName": "yelcho.mydemo.comprouting.Component"
 				},
 				"lazy": true
 			},
-			"usageComponent2": {
-				"name": "yelcho.reuse.component2",
+			"categoriesComponent": {
+				"name": "yelcho.reuse.categories",
 				"settings": {},
 				"componentData": {
 					"parentComponentName": "yelcho.mydemo.comprouting.Component"
 				},
 				"lazy": true
 			},
-			"userSettingsComponent": {
-				"name": "yelcho.reuse.userSettings",
+			"productsComponent": {
+				"name": "yelcho.reuse.products",
 				"settings": {},
 				"componentData": {
 					"parentComponentName": "yelcho.mydemo.comprouting.Component"
@@ -78,22 +63,6 @@
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
 					"bundleName": "yelcho.mydemo.comprouting.i18n.i18n"
-				}
-			},
-			"userData": {
-				"dataSource": "dealerPortalRemote",
-				"defaultBindingMode": "TwoWay",
-				"settings": {
-					"useBatch": false,
-					"defaultCountMode": "Inline"
-				}
-			},
-			"": {
-				"dataSource": "northwind",
-				"defaultBindingMode": "TwoWay",
-				"settings": {
-					"useBatch": false,
-					"defaultCountMode": "Inline"
 				}
 			}
 		},
@@ -124,38 +93,28 @@
 					"target": "home"
 				},
 				{
-					"name": "comp1",
-					"pattern": "detail/:arg1:/:arg2:",
+					"name": "suppliers",
+					"pattern": "suppliers",
 					"target": {
-						"name": "reusecomp1",
-						"prefix": "c1"
+						"name": "suppliers",
+						"prefix": "s"
 					}
 				},
 				{
-					"name": "comp2",
-					"pattern": "detail2",
+					"name": "categories",
+					"pattern": "categories",
 					"target": {
-						"name": "reusecomp2",
-						"prefix": "c2"
+						"name": "categories",
+						"prefix": "c"
 					}
 				},
 				{
-					"name": "userSettings",
-					"pattern": "userSettings",
+					"name": "products",
+					"pattern": "products",
 					"target": {
-						"name": "userSettings",
-						"prefix": "us"
+						"name": "products",
+						"prefix": "p"
 					}
-				},
-				{
-					"name": "dealers",
-					"pattern": "dealers",
-					"target": "dealers"
-				},
-				{
-					"name": "dealerDetail",
-					"pattern": "dealers/{dealerId}",
-					"target": "dealerDetail"
 				}
 			],
 			"targets": {
@@ -163,25 +122,17 @@
 					"viewId": "home",
 					"viewName": "Home"
 				},
-				"dealers": {
-					"viewId": "dealers",
-					"viewName": "Dealers"
-				},
-				"dealerDetail": {
-					"viewId": "dealerDetail",
-					"viewName": "DealerDetail"
-				},
-				"reusecomp1": {
+				"suppliers": {
 					"type": "Component",
-					"usage": "usageComponent1"
+					"usage": "suppliersComponent"
 				},
-				"reusecomp2": {
+				"categories": {
 					"type": "Component",
-					"usage": "usageComponent2"
+					"usage": "categoriesComponent"
 				},
-				"userSettings": {
+				"products": {
 					"type": "Component",
-					"usage": "userSettingsComponent"
+					"usage": "productsComponent"
 				},
 				"notFound": {
 					"viewId": "notFound",

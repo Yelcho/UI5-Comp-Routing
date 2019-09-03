@@ -13,7 +13,7 @@
         <ToolbarSpacer />
         <FormattedText htmlText='&lt;h3&gt;{i18n>appTitle}&lt;/h3&gt;' />
         <ToolbarSpacer />
-        <Button text="{userData>FullName}" 
+        <Button text="{jsonModel>/recipient/name}" 
           type="Transparent" 
           press="onUserNamePress" />
       </tnt:ToolHeader>

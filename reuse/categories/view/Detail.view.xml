@@ -9,7 +9,7 @@
     showHeader="true" 
     showNavButton="true" 
     enableScrolling="true" 
-    class="pageBackground" 
+    class="categoriesPage" 
     navButtonPress="onNavButtonPress">
     <VBox class="sapUiSmallMargin">
       <f:Form id="FormDisplay354" 
