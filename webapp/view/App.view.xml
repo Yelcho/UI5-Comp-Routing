@@ -25,18 +25,15 @@
           <tnt:NavigationListItem text="Home" 
             icon="sap-icon://home" 
             key="home" />
-          <tnt:NavigationListItem text="Reuse Component 1" 
-            icon="sap-icon://navigation-right-arrow" 
-            key="comp1" />
-          <tnt:NavigationListItem text="Reuse Component 2" 
-            icon="sap-icon://open-command-field" 
-            key="comp2" />
-          <tnt:NavigationListItem text="Dealers" 
+          <tnt:NavigationListItem text="Suppliers" 
+            icon="sap-icon://supplier" 
+            key="suppliers" />
+          <tnt:NavigationListItem text="Categories" 
             icon="sap-icon://group" 
-            key="dealers" />
-          <tnt:NavigationListItem text="User Settings" 
-            icon="sap-icon://key-user-settings" 
-            key="userSettings" />
+            key="categories" />
+          <tnt:NavigationListItem text="Products" 
+            icon="sap-icon://product" 
+            key="products" />
         </tnt:NavigationList>
       </tnt:SideNavigation>
     </tnt:sideContent>
