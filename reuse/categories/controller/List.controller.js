@@ -1,11 +1,11 @@
-sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
+sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
 	Controller,
 	Log
 ) {
 	"use strict"
 	return Controller.extend("yelcho.reuse.categories.controller.List", {
 		onInit: function() {
-			Log.info(this.getView().getControllerName(), "onInit")
+			Controller.prototype.onInit.apply(this, arguments)
 
 			this.getOwnerComponent()
 				.getRouter()

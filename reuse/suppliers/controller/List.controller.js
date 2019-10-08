@@ -1,11 +1,11 @@
-sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
+sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
 	Controller,
 	Log
 ) {
 	"use strict"
 	return Controller.extend("yelcho.reuse.suppliers.controller.List", {
 		onInit: function() {
-			Log.info(this.getView().getControllerName(), "onInit")
+			Controller.prototype.onInit.apply(this, arguments)
 
 			this.getOwnerComponent()
 				.getRouter()
@@ -13,23 +13,27 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 				.attachPatternMatched(this._onPatternMatched, this)
 		},
 		_onPatternMatched: function(oEvent) {
-			Log.info(this.getView().getControllerName(), "_onPatternMatched")
-			const oRouter = this.getOwnerComponent().getRouter()
-			if (oRouter.oHashChanger.parent.hash) {
-				const aHash = oRouter.oHashChanger.parent.hash.split("/")
-				switch (aHash[0]) {
-					case "suppliers":
-						oRouter.navTo(
-							"detail",
-							{
-								id: aHash[1]
-							},
-							true
-						)
-						break
-					default:
+			Controller.prototype.onInit.apply(this, arguments)
+
+			try {
+				const aHash = this.getOwnerComponent()
+					.getRouter()
+					.oHashChanger.parent.hash.split("/")
+				if (aHash.length > 1) {
+					switch (aHash[0]) {
+						case "suppliers":
+							oRouter.navTo(
+								"detail",
+								{
+									id: aHash[1]
+								},
+								true
+							)
+							break
+						default:
+					}
 				}
-			}
+			} catch {}
 		},
 		onPressListItem: function(oEvent) {
 			Log.info(this.getView().getControllerName(), "onPressListItem")

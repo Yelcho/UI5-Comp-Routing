@@ -7,9 +7,5 @@
     enableFormattedText="true" 
     description="Welcome Home {jsonModel>/recipient/name}" 
     icon="sap-icon://home">
-    <!-- <buttons>
-      <Button text="Nav to reuse component 1" press=".toReuseComp1" />
-      <Button text="Nav to reuse component 2" press=".toReuseComp2" />
-    </buttons> -->
   </MessagePage>
 </mvc:View>

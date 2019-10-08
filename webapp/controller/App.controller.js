@@ -6,6 +6,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 	return Controller.extend("yelcho.mydemo.comprouting.controller.App", {
 		onInit: function() {
 			Log.info(this.getView().getControllerName(), "onInit")
+
+			this.getOwnerComponent()
+				.getRouter()
+				.attachRouteMatched(this._onRouteMatched, this)
+		},
+		_onRouteMatched: function(oEvent) {
+			Log.info(this.getView().getControllerName(), "_onRouteMatched")
 		},
 		onSideNavButtonPress: function() {
 			var toolPage = this.byId("toolPage")

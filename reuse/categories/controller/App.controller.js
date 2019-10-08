@@ -1,11 +1,8 @@
-sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
-	Controller,
-	Log
-) {
+sap.ui.define(["yelcho/reuse/BaseController"], function(Controller) {
 	"use strict"
 	return Controller.extend("yelcho.mydemo.categories.controller.App", {
 		onInit: function() {
-			Log.info(this.getView().getControllerName(), "onInit")
+			Controller.prototype.onInit.apply(this, arguments)
 		}
 	})
 })
