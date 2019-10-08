@@ -15,10 +15,9 @@ sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
 		_onPatternMatched: function() {
 			Controller.prototype.onInit.apply(this, arguments)
 
+			const oRouter = this.getOwnerComponent().getRouter()
 			try {
-				const aHash = this.getOwnerComponent()
-					.getRouter()
-					.oHashChanger.parent.hash.split("/")
+				const aHash = oRouter.oHashChanger.parent.hash.split("/")
 				if (aHash.length > 1) {
 					switch (aHash[0]) {
 						case "products":
