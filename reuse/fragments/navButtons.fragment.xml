@@ -1,9 +1,0 @@
-<core:FragmentDefinition xmlns="sap.m" 
-  xmlns:core="sap.ui.core">
-  <Button text="Home" 
-    press=".toHome" />
-  <Button text="Reuse Component 1" 
-    press=".toReuseComp1" />
-  <Button text="Reuse Component 2" 
-    press=".toReuseComp2" />
-</core:FragmentDefinition>

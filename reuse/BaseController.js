@@ -1,49 +1,27 @@
-sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
-	Controller,
-	Log
-) {
-	"use strict"
+sap.ui.define(
+	[
+		"sap/ui/core/mvc/Controller",
+		"sap/base/Log",
+		"sap/ui/core/format/NumberFormat"
+	],
+	function(Controller, Log, NumberFormat) {
+		"use strict"
 
-	return Controller.extend("yelcho.dp.BaseController", {
-		onInit: function() {
-			//Controller.prototype.onInit.apply(this, arguments)
-			Log.info(this.getView().getControllerName(), "Initialising controller")
-		},
-		_onPatternMatched: function(oEvent) {
-			Log.info(this.getView().getControllerName(), "_onPatternMatched")
-		},
-		_onRouteMatched: function(oEvent) {
-			Log.info(this.getView().getControllerName(), "_onRouteMatched")
-		},
-		toDefault: function() {
-			Log.info(this.getView().getControllerName(), `toDefault`)
-			this.getOwnerComponent()
-				.getRouter()
-				.navTo("default")
-		},
-		toView1: function() {
-			Log.info(this.getView().getControllerName(), `toView1`)
-			this.getOwnerComponent()
-				.getRouter()
-				.navTo("view1")
-		},
-		toHome: function() {
-			Log.info(this.getView().getControllerName(), `toHome`)
-			this.getOwnerComponent()
-				.getMainRouter()
-				.navTo("home")
-		},
-		toReuseComp1: function() {
-			Log.info(this.getView().getControllerName(), `toReuseComp1`)
-			this.getOwnerComponent()
-				.getMainRouter()
-				.navTo("comp1")
-		},
-		toReuseComp2: function() {
-			Log.info(this.getView().getControllerName(), `toReuseComp1`)
-			this.getOwnerComponent()
-				.getMainRouter()
-				.navTo("comp2")
-		}
-	})
-})
+		return Controller.extend("yelcho.reuse.BaseController", {
+			onInit: function() {
+				Log.info(this.getView().getControllerName(), "onInit")
+			},
+			_onPatternMatched: function(oEvent) {
+				Log.info(this.getView().getControllerName(), "_onPatternMatched")
+			},
+			priceFormatter: function(price) {
+				return NumberFormat.getCurrencyInstance({
+					currencyCode: false
+				}).format(price, "$")
+			},
+			northwindImageFormatter: function(picture) {
+				return picture ? "data:image/bmp;base64," + picture.substr(104) : null
+			}
+		})
+	}
+)

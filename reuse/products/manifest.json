@@ -1,15 +1,23 @@
 {
-	"_version": "1.8.0",
+	"_version": "2.3.0",
 	"sap.app": {
-		"id": "yelcho.mydemo.comprouting",
+		"id": "yelcho.reuse.products",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"applicationVersion": {
-			"version": "1.0.0"
+			"version": "2.03.8"
 		},
-		"dataSources": {}
+		"dataSources": {
+			"northwind": {
+				"uri": "https://cors-anywhere.herokuapp.com/https://services.odata.org/V2/Northwind/Northwind.svc",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
+		}
 	},
 	"sap.ui": {
 		"technology": "UI5",
@@ -21,7 +29,7 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "yelcho.mydemo.comprouting.view.App",
+			"viewName": "yelcho.reuse.products.view.App",
 			"type": "XML",
 			"async": true,
 			"id": "app"
@@ -38,16 +46,10 @@
 				"settings": {},
 				"componentData": {},
 				"lazy": true
-			},
-			"productsComponent": {
-				"name": "yelcho.reuse.products",
-				"settings": {},
-				"componentData": {},
-				"lazy": true
 			}
 		},
 		"dependencies": {
-			"minUI5Version": "1.65",
+			"minUI5Version": "1.69",
 			"libs": {
 				"sap.m": {}
 			}
@@ -56,7 +58,15 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "yelcho.mydemo.comprouting.i18n.i18n"
+					"bundleName": "yelcho.reuse.products.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "northwind",
+				"defaultBindingMode": "TwoWay",
+				"settings": {
+					"useBatch": false,
+					"defaultCountMode": "Inline"
 				}
 			}
 		},
@@ -71,7 +81,7 @@
 			"config": {
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
-				"viewPath": "yelcho.mydemo.comprouting.view",
+				"viewPath": "yelcho.reuse.products.view",
 				"controlId": "app",
 				"controlAggregation": "pages",
 				"transition": "slide",
@@ -82,13 +92,18 @@
 			},
 			"routes": [
 				{
-					"name": "home",
+					"name": "list",
 					"pattern": "",
-					"target": "home"
+					"target": "list"
+				},
+				{
+					"name": "detail",
+					"pattern": "detail/{id}",
+					"target": "detail"
 				},
 				{
 					"name": "suppliers",
-					"pattern": "suppliers",
+					"pattern": "suppliers/{id}",
 					"target": {
 						"name": "suppliers",
 						"prefix": "s"
@@ -96,25 +111,26 @@
 				},
 				{
 					"name": "categories",
-					"pattern": "categories",
+					"pattern": "categories/{id}",
 					"target": {
 						"name": "categories",
 						"prefix": "c"
 					}
 				},
 				{
-					"name": "products",
-					"pattern": "products",
-					"target": {
-						"name": "products",
-						"prefix": "p"
-					}
+					"name": "notfound",
+					"pattern": "notFound",
+					"target": "notFound"
 				}
 			],
 			"targets": {
-				"home": {
-					"viewId": "home",
-					"viewName": "Home"
+				"list": {
+					"viewId": "list",
+					"viewName": "List"
+				},
+				"detail": {
+					"viewId": "detail",
+					"viewName": "Detail"
 				},
 				"suppliers": {
 					"type": "Component",
@@ -123,10 +139,6 @@
 				"categories": {
 					"type": "Component",
 					"usage": "categoriesComponent"
-				},
-				"products": {
-					"type": "Component",
-					"usage": "productsComponent"
 				},
 				"notFound": {
 					"viewId": "notFound",
