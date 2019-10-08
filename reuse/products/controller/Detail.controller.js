@@ -43,6 +43,7 @@ sap.ui.define(
 								this.getView().getControllerName(),
 								"_onPatternMatched change"
 							)
+							this.getView().setBusy(true)
 						}.bind(this),
 						dataRequested: function() {
 							Log.info(

@@ -17,6 +17,22 @@ sap.ui.define(
 			},
 			_onPatternMatched: function() {
 				Log.info(this.getView().getControllerName(), "_onPatternMatched")
+				const oRouter = this.getOwnerComponent().getRouter()
+				if (oRouter.oHashChanger.parent.hash) {
+					const aHash = oRouter.oHashChanger.parent.hash.split("/")
+					switch (aHash[0]) {
+						case "products":
+							oRouter.navTo(
+								"detail",
+								{
+									id: aHash[1]
+								},
+								true
+							)
+							break
+						default:
+					}
+				}
 			},
 			priceFormatter: function(price) {
 				var oCurrencyFormat = sap.ui.core.format.NumberFormat.getCurrencyInstance(

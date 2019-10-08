@@ -35,6 +35,7 @@ sap.ui.define(
 								this.getView().getControllerName(),
 								"_onPatternMatched change"
 							)
+							this.getView().setBusy(false)
 						}.bind(this),
 						dataRequested: function() {
 							Log.info(
@@ -60,6 +61,24 @@ sap.ui.define(
 			},
 			northwindImageFormatter: function(picture) {
 				return picture ? "data:image/bmp;base64," + picture.substr(104) : null
+			},
+			onPressProduct: function(oEvent) {
+				Log.info(
+					this.getView().getControllerName(),
+					"onPressProduct " +
+						oEvent
+							.getSource()
+							.getBindingContext()
+							.getObject().ProductID
+				)
+				this.getOwnerComponent()
+					.getRouter()
+					.navTo("products", {
+						id: oEvent
+							.getSource()
+							.getBindingContext()
+							.getObject().ProductID
+					})
 			},
 			onNavButtonPress: function(oEvent) {
 				var oHistory = History.getInstance()

@@ -5,9 +5,10 @@
   xmlns:f="sap.ui.layout.form" 
   xmlns:core="sap.ui.core" 
   displayBlock="true" 
-  busyIndicatorDelay="0">
+  busyIndicatorDelay="0" 
+  busy="true">
   <Page id="page" 
-    showHeader="true" 
+    showHeader="false" 
     showNavButton="true" 
     enableScrolling="true" 
     class="productsPage" 

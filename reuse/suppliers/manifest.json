@@ -34,7 +34,16 @@
 			"async": true,
 			"id": "app"
 		},
-		"componentUsages": {},
+		"componentUsages": {
+			"productsComponent": {
+				"name": "yelcho.reuse.products",
+				"settings": {},
+				"componentData": {
+					"parentComponentName": "yelcho.mydemo.comprouting.Component"
+				},
+				"lazy": true
+			}
+		},
 		"dependencies": {
 			"minUI5Version": "1.69",
 			"libs": {
@@ -80,13 +89,21 @@
 			"routes": [
 				{
 					"name": "list",
-					"pattern": ":id:",
+					"pattern": "",
 					"target": "list"
 				},
 				{
 					"name": "detail",
 					"pattern": "detail/{id}",
 					"target": "detail"
+				},
+				{
+					"name": "products",
+					"pattern": "products/{id}",
+					"target": {
+						"name": "products",
+						"prefix": "p"
+					}
 				},
 				{
 					"name": "notfound",
@@ -102,6 +119,10 @@
 				"detail": {
 					"viewId": "detail",
 					"viewName": "Detail"
+				},
+				"products": {
+					"type": "Component",
+					"usage": "productsComponent"
 				},
 				"notFound": {
 					"viewId": "notFound",

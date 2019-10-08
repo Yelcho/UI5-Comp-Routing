@@ -35,6 +35,7 @@ sap.ui.define(
 								this.getView().getControllerName(),
 								"_onPatternMatched change"
 							)
+							this.getView().setBusy(false)
 						}.bind(this),
 						dataRequested: function() {
 							Log.info(
@@ -57,6 +58,24 @@ sap.ui.define(
 						}.bind(this)
 					}
 				})
+			},
+			onPressProduct: function(oEvent) {
+				Log.info(
+					this.getView().getControllerName(),
+					"onPressProduct " +
+						oEvent
+							.getSource()
+							.getBindingContext()
+							.getObject().ProductID
+				)
+				this.getOwnerComponent()
+					.getRouter()
+					.navTo("products", {
+						id: oEvent
+							.getSource()
+							.getBindingContext()
+							.getObject().ProductID
+					})
 			},
 			onNavButtonPress: function(oEvent) {
 				var oHistory = History.getInstance()

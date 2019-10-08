@@ -15,17 +15,20 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 		_onPatternMatched: function() {
 			Log.info(this.getView().getControllerName(), "_onPatternMatched")
 			const oRouter = this.getOwnerComponent().getRouter()
-			if (
-				oRouter.oHashChanger.parent.hash &&
-				oRouter.oHashChanger.parent.hash.search("/") >= 0
-			) {
-				oRouter.navTo(
-					"detail",
-					{
-						id: oRouter.oHashChanger.parent.hash.split("/")[1]
-					},
-					true
-				)
+			if (oRouter.oHashChanger.parent.hash) {
+				const aHash = oRouter.oHashChanger.parent.hash.split("/")
+				switch (aHash[0]) {
+					case "categories":
+						oRouter.navTo(
+							"detail",
+							{
+								id: aHash[1]
+							},
+							true
+						)
+						break
+					default:
+				}
 			}
 		},
 		onPressListItem: function(oEvent) {
