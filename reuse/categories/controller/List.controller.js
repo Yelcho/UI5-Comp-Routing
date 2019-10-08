@@ -14,22 +14,26 @@ sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
 		},
 		_onPatternMatched: function() {
 			Log.info(this.getView().getControllerName(), "_onPatternMatched")
-			const oRouter = this.getOwnerComponent().getRouter()
-			if (oRouter.oHashChanger.parent.hash) {
-				const aHash = oRouter.oHashChanger.parent.hash.split("/")
-				switch (aHash[0]) {
-					case "categories":
-						oRouter.navTo(
-							"detail",
-							{
-								id: aHash[1]
-							},
-							true
-						)
-						break
-					default:
+
+			try {
+				const aHash = this.getOwnerComponent()
+					.getRouter()
+					.oHashChanger.parent.hash.split("/")
+				if (aHash.length > 1) {
+					switch (aHash[0]) {
+						case "categories":
+							oRouter.navTo(
+								"detail",
+								{
+									id: aHash[1]
+								},
+								true
+							)
+							break
+						default:
+					}
 				}
-			}
+			} catch {}
 		},
 		onPressListItem: function(oEvent) {
 			Log.info(this.getView().getControllerName(), "onPressListItem")
