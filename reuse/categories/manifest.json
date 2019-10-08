@@ -38,9 +38,7 @@
 			"productsComponent": {
 				"name": "yelcho.reuse.products",
 				"settings": {},
-				"componentData": {
-					"parentComponentName": "yelcho.mydemo.comprouting.Component"
-				},
+				"componentData": {},
 				"lazy": true
 			}
 		},

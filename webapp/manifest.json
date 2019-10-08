@@ -30,25 +30,19 @@
 			"suppliersComponent": {
 				"name": "yelcho.reuse.suppliers",
 				"settings": {},
-				"componentData": {
-					"parentComponentName": "yelcho.mydemo.comprouting.Component"
-				},
+				"componentData": {},
 				"lazy": true
 			},
 			"categoriesComponent": {
 				"name": "yelcho.reuse.categories",
 				"settings": {},
-				"componentData": {
-					"parentComponentName": "yelcho.mydemo.comprouting.Component"
-				},
+				"componentData": {},
 				"lazy": true
 			},
 			"productsComponent": {
 				"name": "yelcho.reuse.products",
 				"settings": {},
-				"componentData": {
-					"parentComponentName": "yelcho.mydemo.comprouting.Component"
-				},
+				"componentData": {},
 				"lazy": true
 			}
 		},
