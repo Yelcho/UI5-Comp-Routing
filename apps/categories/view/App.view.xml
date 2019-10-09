@@ -1,6 +1,0 @@
-<mvc:View controllerName="yelcho.app.categories.controller.App" 
-  xmlns:mvc="sap.ui.core.mvc" 
-  xmlns="sap.m" 
-  displayBlock="true">
-  <App id="app" />
-</mvc:View>
