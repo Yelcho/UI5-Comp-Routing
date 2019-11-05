@@ -1,4 +1,7 @@
-sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
+sap.ui.define([
+	"yelcho/reuse/BaseController",
+	"sap/base/Log"
+], function(
 	Controller,
 	Log
 ) {
@@ -67,14 +70,16 @@ sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
 						.getBindingContext()
 						.getObject().ProductID
 			)
-			this.getOwnerComponent()
-				.getRouter()
-				.navTo("products", {
-					id: oEvent
-						.getSource()
-						.getBindingContext()
-						.getObject().ProductID
-				})
+
+			// inform the outer component (if exists) that it should
+			// navigate to the product detail page
+			this.getOwnerComponent().fireEvent("toProduct", {
+				productID: oEvent
+							.getSource()
+							.getBindingContext()
+							.getObject().ProductID
+
+			})
 		}
 	})
 })

@@ -1,4 +1,7 @@
-sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
+sap.ui.define([
+	"sap/ui/core/mvc/Controller",
+	"sap/base/Log"
+], function(
 	Controller,
 	Log
 ) {
@@ -7,7 +10,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 		onInit: function() {
 			Log.info(this.getView().getControllerName(), "onInit")
 
-			this.getOwnerComponent()
+			this
+				.getOwnerComponent()
 				.getRouter()
 				.attachRouteMatched(this._onRouteMatched, this)
 		},

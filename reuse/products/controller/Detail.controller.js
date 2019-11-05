@@ -1,4 +1,7 @@
-sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
+sap.ui.define([
+	"yelcho/reuse/BaseController",
+	"sap/base/Log"
+], function(
 	Controller,
 	Log
 ) {
@@ -10,9 +13,9 @@ sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
 			this.getOwnerComponent()
 				.getRouter()
 				.getRoute("detail")
-				.attachPatternMatched(this._onPatternMatched, this)
+				.attachPatternMatched(this._onMatched, this)
 		},
-		_onPatternMatched: function(oEvent) {
+		_onMatched: function(oEvent) {
 			Controller.prototype.onInit.apply(this, arguments)
 
 			const args = oEvent.getParameter("arguments")
@@ -71,13 +74,14 @@ sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
 						.getBindingContext()
 						.getObject().SupplierID
 			)
-			this.getOwnerComponent()
-				.getRouter()
-				.navTo("suppliers", {
-					id: oEvent
-						.getSource()
-						.getBindingContext()
-						.getObject().SupplierID
+
+			this
+				.getOwnerComponent()
+				.fireEvent("toSupplier", {
+					supplierID: oEvent
+									.getSource()
+									.getBindingContext()
+									.getObject().SupplierID
 				})
 		},
 		onPressCategory: function(oEvent) {
@@ -89,13 +93,14 @@ sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
 						.getBindingContext()
 						.getObject().CategoryID
 			)
-			this.getOwnerComponent()
-				.getRouter()
-				.navTo("categories", {
-					id: oEvent
-						.getSource()
-						.getBindingContext()
-						.getObject().CategoryID
+
+			this
+				.getOwnerComponent()
+				.fireEvent("toCategory", {
+					categoryID: oEvent
+									.getSource()
+									.getBindingContext()
+									.getObject().CategoryID
 				})
 		}
 	})

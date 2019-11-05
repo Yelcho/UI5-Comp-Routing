@@ -10,17 +10,13 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 			this.getOwnerComponent()
 				.getRouter()
 				.getRoute("home")
-				.attachPatternMatched(this._onPatternMatched, this)
-
-			this.getOwnerComponent()
-				.getRouter()
-				.attachRouteMatched(this._onRouteMatched, this)
+				.attachMatched(this._onMatched, this)
 
 			this.getOwnerComponent()
 				.getRouter()
 				.attachBypassed(this._onBypassed, this)
 		},
-		_onPatternMatched: function() {
+		_onMatched: function() {
 			Log.info(this.getView().getControllerName(), "_onPatternMatched")
 		},
 		_onBypassed: function(oEvent) {
