@@ -29,6 +29,14 @@ sap.ui.define([
 						route: "detail",
 						parameters: {
 							id: "supplierID"
+						},
+						componentTargetInfo: {
+							products: {
+								route: "list",
+								parameters: {
+									basepath: "supplierKey"
+								}
+							}
 						}
 					}
 				}
@@ -40,6 +48,14 @@ sap.ui.define([
 						route: "detail",
 						parameters: {
 							id: "categoryID"
+						},
+						componentTargetInfo: {
+							products: {
+								route: "list",
+								parameters: {
+									basepath: "categoryKey"
+								}
+							}
 						}
 					}
 				}
@@ -87,29 +103,47 @@ sap.ui.define([
 				const oOptions = oEvent.getParameter("options")
 				const that = this
 
+				function processComponentTargetInfo(oTargetInfo, oEvent) {
+					Object.values(oTargetInfo).forEach(function(oInfo) {
+						if (oInfo.parameters) {
+							Object.keys(oInfo.parameters).forEach(function(sName) {
+								let sParamName = oInfo.parameters[sName];
+								let sEventValue = oEvent.getParameter(sParamName);
+
+								// expand the parameter mapping with the parameter value from
+								// the event
+								oInfo.parameters[sName] = sEventValue;
+							})
+						}
+
+						if (oInfo.componentTargetInfo) {
+							processComponentTargetInfo(oInfo.componentTargetInfo, oEvent);
+						}
+					});
+				}
+
 				if (sType === "Component") {
 					let aEvents = mEventMappings[oOptions.usage]
 					if (Array.isArray(aEvents)) {
 						aEvents.forEach(function(oEventMapping) {
 							oObject.attachEvent(oEventMapping.name, function(oEvent) {
 								let oTargetInfo = deepClone(oEventMapping.targetInfo);
-								Object.values(oTargetInfo).forEach(function(oInfo) {
-									if (oInfo.parameters) {
-										Object.keys(oInfo.parameters).forEach(function(sName) {
-											let sParamName = oInfo.parameters[sName];
-											// expand the parameter mapping with the parameter value from
-											// the event
-											oInfo.parameters[sName] = oEvent.getParameter(sParamName)
-										})
-									}
+								processComponentTargetInfo(oTargetInfo, oEvent);
 
-								})
 								that
 									.getRouter()
 									.navTo(oEventMapping.route, {}, oTargetInfo)
+								that.setSelectedMenuItem(oEventMapping.route);
 							})
 						});
 					}
+				}
+			},
+			setSelectedMenuItem: function(sKey) {
+				const oRootView = this.getRootControl();
+
+				if (oRootView) {
+					oRootView.byId("navigationList").setSelectedKey(sKey);
 				}
 			}
 		})

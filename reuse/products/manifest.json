@@ -34,20 +34,6 @@
 			"async": true,
 			"id": "app"
 		},
-		"componentUsages": {
-			"suppliersComponent": {
-				"name": "yelcho.reuse.suppliers",
-				"settings": {},
-				"componentData": {},
-				"lazy": true
-			},
-			"categoriesComponent": {
-				"name": "yelcho.reuse.categories",
-				"settings": {},
-				"componentData": {},
-				"lazy": true
-			}
-		},
 		"dependencies": {
 			"minUI5Version": "1.69",
 			"libs": {
@@ -93,29 +79,13 @@
 			"routes": [
 				{
 					"name": "list",
-					"pattern": "",
+					"pattern": ":basepath:",
 					"target": "list"
 				},
 				{
 					"name": "detail",
 					"pattern": "detail/{id}",
 					"target": "detail"
-				},
-				{
-					"name": "suppliers",
-					"pattern": "suppliers/{id}",
-					"target": {
-						"name": "suppliers",
-						"prefix": "s"
-					}
-				},
-				{
-					"name": "categories",
-					"pattern": "categories/{id}",
-					"target": {
-						"name": "categories",
-						"prefix": "c"
-					}
 				},
 				{
 					"name": "notfound",
@@ -131,14 +101,6 @@
 				"detail": {
 					"viewId": "detail",
 					"viewName": "Detail"
-				},
-				"suppliers": {
-					"type": "Component",
-					"usage": "suppliersComponent"
-				},
-				"categories": {
-					"type": "Component",
-					"usage": "categoriesComponent"
 				},
 				"notFound": {
 					"viewId": "notFound",

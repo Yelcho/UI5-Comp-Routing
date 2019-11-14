@@ -93,11 +93,6 @@
 				{
 					"name": "detail",
 					"pattern": "detail/{id}",
-					"target": "detail"
-				},
-				{
-					"name": "products",
-					"pattern": "products/{id}",
 					"target": {
 						"name": "products",
 						"prefix": "p"
@@ -120,7 +115,11 @@
 				},
 				"products": {
 					"type": "Component",
-					"usage": "productsComponent"
+					"usage": "productsComponent",
+					"parent": "detail",
+					"controlId": "box",
+					"controlAggregation": "items",
+					"id": "productInCategory"
 				},
 				"notFound": {
 					"viewId": "notFound",

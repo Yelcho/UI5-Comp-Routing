@@ -13,11 +13,10 @@ sap.ui.define([
 			this.getOwnerComponent()
 				.getRouter()
 				.getRoute("detail")
-				.attachPatternMatched(this._onPatternMatched, this)
+				.attachMatched(this._onMatched, this)
 		},
-		_onPatternMatched: function(oEvent) {
+		_onMatched: function(oEvent) {
 			Controller.prototype.onInit.apply(this, arguments)
-
 			const args = oEvent.getParameter("arguments")
 
 			this.getOwnerComponent()
@@ -59,26 +58,6 @@ sap.ui.define([
 								.display("notFound")
 					}.bind(this)
 				}
-			})
-		},
-		onPressProduct: function(oEvent) {
-			Log.info(
-				this.getView().getControllerName(),
-				"onPressProduct " +
-					oEvent
-						.getSource()
-						.getBindingContext()
-						.getObject().ProductID
-			)
-
-			// inform the outer component (if exists) that it should
-			// navigate to the product detail page
-			this.getOwnerComponent().fireEvent("toProduct", {
-				productID: oEvent
-							.getSource()
-							.getBindingContext()
-							.getObject().ProductID
-
 			})
 		}
 	})

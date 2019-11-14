@@ -18,6 +18,8 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 		},
 		_onMatched: function() {
 			Log.info(this.getView().getControllerName(), "_onPatternMatched")
+
+			this.getOwnerComponent().setSelectedMenuItem("home");
 		},
 		_onBypassed: function(oEvent) {
 			Log.info(

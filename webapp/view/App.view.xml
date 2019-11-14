@@ -21,7 +21,7 @@
     <tnt:sideContent>
       <tnt:SideNavigation expanded="false" 
         itemSelect=".onItemSelect">
-        <tnt:NavigationList>
+        <tnt:NavigationList id="navigationList">
           <tnt:NavigationListItem text="Home" 
             icon="sap-icon://home" 
             key="home" />

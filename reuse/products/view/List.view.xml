@@ -1,18 +1,16 @@
-<mvc:View controllerName="yelcho.reuse.products.controller.List" 
-  xmlns:mvc="sap.ui.core.mvc" 
-  xmlns="sap.m" 
+<mvc:View controllerName="yelcho.reuse.products.controller.List"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
   displayBlock="true">
-  <Page id="page" 
-    showHeader="false" 
-    enableScrolling="true" 
+  <Page id="page"
+    showHeader="false"
+    enableScrolling="true"
     class="productsPage">
-    <Table inset="false" 
-      busyIndicatorDelay="0" 
-      items="{path:'/Products',parameters:{expand:'Supplier'}}">
+    <Table id="table" inset="false" busyIndicatorDelay="0">
       <headerToolbar>
         <OverflowToolbar>
           <content>
-            <Title text="{i18n>listViewTitle}" 
+            <Title text="{i18n>listViewTitle}"
               level="H2" />
             <ToolbarSpacer />
           </content>
@@ -32,17 +30,6 @@
           <Text text="Price" />
         </Column>
       </columns>
-      <items>
-        <ColumnListItem type="Navigation" 
-          press="onPressListItem">
-          <cells>
-            <Text text="{ProductID}" />
-            <Text text="{ProductName}" />
-            <Text text="{Supplier/CompanyName}" />
-            <Text text="{path:'UnitPrice', formatter:'.priceFormatter'}" />
-          </cells>
-        </ColumnListItem>
-      </items>
     </Table>
   </Page>
 </mvc:View>

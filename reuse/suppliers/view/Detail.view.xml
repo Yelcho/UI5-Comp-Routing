@@ -13,7 +13,7 @@
     enableScrolling="true" 
     class="suppliersPage" 
     navButtonPress="onNavButtonPress">
-    <VBox class="sapUiSmallMargin">
+    <VBox id="box" class="sapUiSmallMargin">
       <f:Form id="FormDisplay354" 
         editable="false">
         <f:title>
@@ -76,41 +76,6 @@
           </f:FormContainer>
         </f:formContainers>
       </f:Form>
-      <Table inset="false" 
-        busyIndicatorDelay="0" 
-        items="{path:'Products'}">
-        <headerToolbar>
-          <OverflowToolbar>
-            <content>
-              <Title text="{i18n>productListTitle}" 
-                level="H2" />
-              <ToolbarSpacer />
-            </content>
-          </OverflowToolbar>
-        </headerToolbar>
-        <columns>
-          <Column width="12em">
-            <Text text="ID" />
-          </Column>
-          <Column>
-            <Text text="Name" />
-          </Column>
-          <Column>
-            <Text text="Price" />
-          </Column>
-        </columns>
-        <items>
-          <ColumnListItem type="Navigation" 
-            press="onPressProduct">
-            <cells>
-              <Text text="{ProductID}" />
-              <Text text="{ProductName}" />
-              <Text text="{path:'UnitPrice', formatter:'.priceFormatter'}" />
-            </cells>
-          </ColumnListItem>
-        </items>
-      </Table>
-
     </VBox>
   </Page>
 </mvc:View>

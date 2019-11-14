@@ -16,8 +16,6 @@ sap.ui.define([
 				.attachPatternMatched(this._onMatched, this)
 		},
 		_onMatched: function(oEvent) {
-			Controller.prototype.onInit.apply(this, arguments)
-
 			const args = oEvent.getParameter("arguments")
 
 			this.getOwnerComponent()
@@ -75,14 +73,17 @@ sap.ui.define([
 						.getObject().SupplierID
 			)
 
-			this
-				.getOwnerComponent()
-				.fireEvent("toSupplier", {
-					supplierID: oEvent
-									.getSource()
-									.getBindingContext()
-									.getObject().SupplierID
-				})
+			const oOwnerComponent = this.getOwnerComponent();
+			const oModel = oOwnerComponent.getModel();
+			const oBindingContext = oEvent.getSource().getBindingContext();
+			const sSupplierID = oBindingContext.getProperty("SupplierID");
+
+			oOwnerComponent.fireEvent("toSupplier", {
+					supplierID: sSupplierID,
+					supplierKey: encodeURIComponent("/" + oModel.createKey("Suppliers", {
+						SupplierID: sSupplierID
+					}))
+				});
 		},
 		onPressCategory: function(oEvent) {
 			Log.info(
@@ -94,14 +95,17 @@ sap.ui.define([
 						.getObject().CategoryID
 			)
 
-			this
-				.getOwnerComponent()
-				.fireEvent("toCategory", {
-					categoryID: oEvent
-									.getSource()
-									.getBindingContext()
-									.getObject().CategoryID
-				})
+			const oOwnerComponent = this.getOwnerComponent();
+			const oModel = oOwnerComponent.getModel();
+			const oBindingContext = oEvent.getSource().getBindingContext();
+			const sCategoryID = oBindingContext.getProperty("CategoryID");
+
+			oOwnerComponent.fireEvent("toCategory", {
+					categoryID: sCategoryID,
+					categoryKey: encodeURIComponent("/" + oModel.createKey("Categories", {
+						CategoryID: sCategoryID
+					}))
+				});
 		}
 	})
 })
