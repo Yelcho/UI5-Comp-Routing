@@ -8,7 +8,7 @@ sap.ui.define([
 		onPressListItem: function(oEvent) {
 			Log.info(this.getView().getControllerName(), "onPressListItem");
 
-			const oBindingContext = oEvent.getSource().getBindingContext();
+			var oBindingContext = oEvent.getSource().getBindingContext();
 
 			// navigate to the detail page. Because the products component is
 			// integrated in the detail page, it's also needed to provide route

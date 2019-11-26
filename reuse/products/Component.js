@@ -1,8 +1,28 @@
-sap.ui.define(["yelcho/reuse/BaseComponent"], function(UIComponent) {
+sap.ui.define([
+	"yelcho/reuse/BaseComponent",
+	"sap/ui/core/Component"
+], function(BaseComponent, Component) {
 	"use strict";
-	return UIComponent.extend("yelcho.reuse.products.Component", {
+	return BaseComponent.extend("yelcho.reuse.products.Component", {
 		metadata: {
 			manifest: "json"
+		},
+		init: function() {
+			BaseComponent.prototype.init.apply(this, arguments);
+
+			var oParentComponent = Component.getOwnerComponentFor(this);
+			// if this component runs standalone instead of embedded to another component,
+			// it should handle the navigation to detail page by itself. It attaches to
+			// its own "toProduct" event and navigates to the detail page
+			if (!oParentComponent) {
+				this.attachEvent("toProduct", function(oEvent) {
+					var sProductID = oEvent.getParameter("productID");
+
+					this.getRouter().navTo("detail", {
+						id: sProductID
+					});
+				}, this);
+			}
 		}
 	});
 });

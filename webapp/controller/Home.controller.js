@@ -1,7 +1,7 @@
-sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
-	Controller,
-	Log
-) {
+sap.ui.define([
+	"sap/ui/core/mvc/Controller",
+	"sap/base/Log"
+], function(Controller, Log) {
 	"use strict";
 	return Controller.extend("yelcho.mydemo.comprouting.controller.Home", {
 		onInit: function() {
@@ -22,9 +22,10 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 			this.getOwnerComponent().setSelectedMenuItem("home");
 		},
 		_onBypassed: function(oEvent) {
+			var sHash = oEvent.getParameter("hash");
 			Log.info(
 				this.getView().getControllerName(),
-				`_onBypassed Hash="${oEvent.getParameter("hash")}"`
+				"_onBypassed Hash=" + sHash
 			);
 		}
 	});

@@ -18,7 +18,7 @@ sap.ui.define([
 		},
 		_onMatched: function(oEvent) {
 			Log.info(this.getView().getControllerName(), "_onMatched");
-			const args = oEvent.getParameter("arguments");
+			var args = oEvent.getParameter("arguments");
 
 			this.getOwnerComponent()
 				.getModel()

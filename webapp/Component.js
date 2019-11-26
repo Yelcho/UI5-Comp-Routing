@@ -66,6 +66,17 @@ sap.ui.define([
 							}
 						}
 					}
+				}, {
+					name: "toProduct",
+					route: "products",
+					componentTargetInfo: {
+						products: {
+							route: "detail",
+							parameters: {
+								id: "productID"
+							}
+						}
+					}
 				}],
 				categoriesComponent: [{
 					name: "toProduct",
@@ -102,7 +113,7 @@ sap.ui.define([
 				this.setSelectedMenuItem(oConfig.name);
 			},
 			setSelectedMenuItem: function(sKey) {
-				const oRootView = this.getRootControl();
+				var oRootView = this.getRootControl();
 
 				if (oRootView) {
 					oRootView.byId("navigationList").setSelectedKey(sKey);

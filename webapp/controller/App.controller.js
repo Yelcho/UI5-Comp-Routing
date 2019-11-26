@@ -19,18 +19,18 @@ sap.ui.define([
 			Log.info(this.getView().getControllerName(), "_onRouteMatched");
 		},
 		onSideNavButtonPress: function() {
-			var toolPage = this.byId("toolPage");
-			toolPage.setSideExpanded(!toolPage.getSideExpanded());
+			var oToolPage = this.byId("toolPage");
+			oToolPage.setSideExpanded(!oToolPage.getSideExpanded());
 		},
 		onUserNamePress: function() {
 			Log.info(this.getView().getControllerName(), "onUserNamePress");
 		},
 		onItemSelect: function(oEvent) {
-			const key = oEvent.getParameter("item").getKey();
-			Log.info(this.getView().getControllerName(), `onItemSelect Key=${key}`);
+			var sKey = oEvent.getParameter("item").getKey();
+			Log.info(this.getView().getControllerName(), "onItemSelect Key=" + sKey);
 			this.getOwnerComponent()
 				.getRouter()
-				.navTo(key);
+				.navTo(sKey);
 		}
 	});
 });
