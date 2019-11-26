@@ -1,13 +1,13 @@
-sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
-	Controller,
-	Log
-) {
-	"use strict"
-	return Controller.extend("yelcho.reuse.suppliers.controller.List", {
+sap.ui.define([
+	"yelcho/reuse/BaseController",
+	"sap/base/Log"
+], function(BaseController, Log) {
+	"use strict";
+	return BaseController.extend("yelcho.reuse.suppliers.controller.List", {
 		onPressListItem: function(oEvent) {
-			Log.info(this.getView().getControllerName(), "onPressListItem")
+			Log.info(this.getView().getControllerName(), "onPressListItem");
 
-			const oBindingContext = oEvent.getSource().getBindingContext();
+			var oBindingContext = oEvent.getSource().getBindingContext();
 
 			this.getOwnerComponent()
 				.getRouter()
@@ -24,5 +24,5 @@ sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
 					}
 				});
 		}
-	})
-})
+	});
+});

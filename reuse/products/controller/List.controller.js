@@ -3,32 +3,30 @@ sap.ui.define([
 	"sap/m/ColumnListItem",
 	"sap/m/Text",
 	"sap/base/Log",
-	"sap/ui/core/Component"
+	"sap/ui/model/type/Currency"
 ], function(
-	Controller,
+	BaseController,
 	ColumnListItem,
 	Text,
 	Log,
-	Component
+	Currency
 ) {
-	"use strict"
-	return Controller.extend("yelcho.reuse.products.controller.List", {
+	"use strict";
+
+	return BaseController.extend("yelcho.reuse.products.controller.List", {
 		onInit: function() {
-			Controller.prototype.onInit.apply(this, arguments)
+			BaseController.prototype.onInit.apply(this, arguments);
 
 			this.getOwnerComponent()
 				.getRouter()
 				.getRoute("list")
-				.attachPatternMatched(this._onMatched, this)
+				.attachMatched(this._onMatched, this);
 		},
 		_onMatched: function(oEvent) {
-			const oArgs = oEvent.getParameter("arguments");
-			const sPath = decodeURIComponent(oArgs.basepath || "") + "/Products";
-			const oTable = this.getView().byId("table");
-			const that = this;
-
-			// check whether the list view is used in embedded mode
-			this.bEmbedded = !!oArgs.basepath;
+			var oArgs = oEvent.getParameter("arguments");
+			var sPath = decodeURIComponent(oArgs.basepath || "") + "/Products";
+			var oTable = this.getView().byId("table");
+			var that = this;
 
 			oTable.bindItems({
 				path: sPath,
@@ -43,33 +41,36 @@ sap.ui.define([
 						new Text({ text: "{ProductName}" }),
 						new Text({ text: "{Supplier/CompanyName}" }),
 						new Text({ text: {
-							path: "UnitPrice",
-							formatter: that.priceFormatter
+							parts: [{
+								path: "UnitPrice"
+							}, {
+								value: "$"
+							}],
+							type: new Currency({
+								currencyCode: false
+							})
 						} })
 					]
 				})
 			});
 		},
 		onPressListItem: function(oEvent) {
-			Log.info(this.getView().getControllerName(), "onPressListItem")
+			Log.info(this.getView().getControllerName(), "onPressListItem");
 
-			const oOwnerComponent = this.getOwnerComponent();
-			const sProductID = oEvent.getSource().getBindingContext().getProperty("ProductID");
+			var sProductID = oEvent.getSource().getBindingContext().getProperty("ProductID");
 
-			if (this.bEmbedded) {
-				// in embedded mode
-				// get the parent component of the owner component
-				// and fire the "toProduct" event to go to the detail page of the product
-				Component.getOwnerComponentFor(oOwnerComponent).fireEvent("toProduct", {
-					productID: sProductID
-				});
-			} else {
-				oOwnerComponent
-					.getRouter()
-					.navTo("detail", {
-						id: sProductID
-					})
-			}
+			// inform the parent component about the navigation to the detail page
+			//
+			// the navigation isn't done within this component because when this component is embeded
+			// in suppliers/categories component, it should trigger the navigation within the root
+			// component.
+			//
+			// simply always inform the parent component that a navigation to the detail page is needed.
+			// In the deeply nested use case, the direct parent component forwards this event to the root
+			// component and a navigation is then triggered from the root component
+			this.getOwnerComponent().fireEvent("toProduct", {
+				productID: sProductID
+			});
 		}
-	})
-})
+	});
+});

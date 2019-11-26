@@ -2,22 +2,22 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 	Controller,
 	Log
 ) {
-	"use strict"
+	"use strict";
 	return Controller.extend("yelcho.mydemo.comprouting.controller.Home", {
 		onInit: function() {
-			Log.info(this.getView().getControllerName(), "onInit")
+			Log.info(this.getView().getControllerName(), "onInit");
 
 			this.getOwnerComponent()
 				.getRouter()
 				.getRoute("home")
-				.attachMatched(this._onMatched, this)
+				.attachMatched(this._onMatched, this);
 
 			this.getOwnerComponent()
 				.getRouter()
-				.attachBypassed(this._onBypassed, this)
+				.attachBypassed(this._onBypassed, this);
 		},
 		_onMatched: function() {
-			Log.info(this.getView().getControllerName(), "_onPatternMatched")
+			Log.info(this.getView().getControllerName(), "_onPatternMatched");
 
 			this.getOwnerComponent().setSelectedMenuItem("home");
 		},
@@ -25,7 +25,7 @@ sap.ui.define(["sap/ui/core/mvc/Controller", "sap/base/Log"], function(
 			Log.info(
 				this.getView().getControllerName(),
 				`_onBypassed Hash="${oEvent.getParameter("hash")}"`
-			)
+			);
 		}
-	})
-})
+	});
+});

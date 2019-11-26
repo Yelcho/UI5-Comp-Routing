@@ -1,14 +1,18 @@
-sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
-	Controller,
-	Log
-) {
-	"use strict"
+sap.ui.define([
+	"yelcho/reuse/BaseController",
+	"sap/base/Log"
+], function(Controller, Log) {
+	"use strict";
+
 	return Controller.extend("yelcho.reuse.categories.controller.List", {
 		onPressListItem: function(oEvent) {
-			Log.info(this.getView().getControllerName(), "onPressListItem")
+			Log.info(this.getView().getControllerName(), "onPressListItem");
 
 			const oBindingContext = oEvent.getSource().getBindingContext();
 
+			// navigate to the detail page. Because the products component is
+			// integrated in the detail page, it's also needed to provide route
+			// information for the deeply nested products component
 			this.getOwnerComponent()
 				.getRouter()
 				.navTo("detail", {
@@ -24,5 +28,5 @@ sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
 					}
 				});
 		}
-	})
-})
+	});
+});

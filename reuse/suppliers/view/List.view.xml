@@ -1,18 +1,18 @@
-<mvc:View controllerName="yelcho.reuse.suppliers.controller.List" 
-  xmlns:mvc="sap.ui.core.mvc" 
-  xmlns="sap.m" 
+<mvc:View controllerName="yelcho.reuse.suppliers.controller.List"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
   displayBlock="true">
-  <Page id="page" 
-    showHeader="false" 
-    enableScrolling="true" 
+  <Page id="page"
+    showHeader="false"
+    enableScrolling="true"
     class="suppliersPage">
-    <Table inset="false" 
-      busyIndicatorDelay="0" 
+    <Table inset="false"
+      busyIndicatorDelay="0"
       items="{/Suppliers}">
       <headerToolbar>
         <OverflowToolbar>
           <content>
-            <Title text="{i18n>listViewTitle}" 
+            <Title text="{i18n>listViewTitle}"
               level="H2" />
             <ToolbarSpacer />
           </content>
@@ -30,7 +30,7 @@
         </Column>
       </columns>
       <items>
-        <ColumnListItem type="Navigation" 
+        <ColumnListItem type="Navigation"
           press="onPressListItem">
           <cells>
             <Text text="{SupplierID}" />

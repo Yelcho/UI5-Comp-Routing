@@ -35,7 +35,7 @@
 			"id": "app"
 		},
 		"dependencies": {
-			"minUI5Version": "1.69",
+			"minUI5Version": "1.72",
 			"libs": {
 				"sap.m": {}
 			}
@@ -50,6 +50,7 @@
 			"": {
 				"dataSource": "northwind",
 				"defaultBindingMode": "TwoWay",
+				"preload": true,
 				"settings": {
 					"useBatch": false,
 					"defaultCountMode": "Inline"
