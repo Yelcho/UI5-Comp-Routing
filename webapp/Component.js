@@ -1,6 +1,6 @@
 sap.ui.define([
 	"yelcho/reuse/BaseComponent",
-	"sap/ui/model/json/JSONModel",
+	"sap/ui/model/json/JSONModel"
 ], function(BaseComponent, JSONModel) {
 		"use strict";
 
