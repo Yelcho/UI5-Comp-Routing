@@ -1,49 +1,32 @@
-sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
-	Controller,
-	Log
-) {
-	"use strict"
+sap.ui.define([
+	"yelcho/reuse/BaseController",
+	"sap/base/Log"
+], function(Controller, Log) {
+	"use strict";
+
 	return Controller.extend("yelcho.reuse.categories.controller.List", {
-		onInit: function() {
-			Controller.prototype.onInit.apply(this, arguments)
-
-			this.getOwnerComponent()
-				.getRouter()
-				.getRoute("list")
-				.attachPatternMatched(this._onPatternMatched, this)
-		},
-		_onPatternMatched: function() {
-			Log.info(this.getView().getControllerName(), "_onPatternMatched")
-
-			const oRouter = this.getOwnerComponent().getRouter()
-			try {
-				const aHash = oRouter.oHashChanger.parent.hash.split("/")
-				if (aHash.length > 1) {
-					switch (aHash[0]) {
-						case "categories":
-							oRouter.navTo(
-								"detail",
-								{
-									id: aHash[1]
-								},
-								true
-							)
-							break
-						default:
-					}
-				}
-			} catch {}
-		},
 		onPressListItem: function(oEvent) {
-			Log.info(this.getView().getControllerName(), "onPressListItem")
+			Log.info(this.getView().getControllerName(), "onPressListItem");
+
+			var oBindingContext = oEvent.getSource().getBindingContext();
+
+			// navigate to the detail page. Because the products component is
+			// integrated in the detail page, it's also needed to provide route
+			// information for the deeply nested products component
 			this.getOwnerComponent()
 				.getRouter()
 				.navTo("detail", {
-					id: oEvent
-						.getSource()
-						.getBindingContext()
-						.getObject().CategoryID
-				})
+					id: oBindingContext.getProperty("CategoryID")
+				}, {
+					products: {
+						route: "list",
+						parameters: {
+							// encode the path because it could contain "/" which
+							// isn't allowed to use as pattern parameter directly
+							basepath: encodeURIComponent(oBindingContext.getPath())
+						}
+					}
+				});
 		}
-	})
-})
+	});
+});

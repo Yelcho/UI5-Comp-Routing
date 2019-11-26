@@ -1,33 +1,32 @@
-sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
-	Controller,
-	Log
-) {
-	"use strict"
-	return Controller.extend("yelcho.reuse.products.controller.Detail", {
+sap.ui.define([
+	"yelcho/reuse/BaseController",
+	"sap/base/Log"
+], function(BaseController, Log) {
+	"use strict";
+	return BaseController.extend("yelcho.reuse.products.controller.Detail", {
 		onInit: function() {
-			Controller.prototype.onInit.apply(this, arguments)
+			BaseController.prototype.onInit.apply(this, arguments);
 
 			this.getOwnerComponent()
 				.getRouter()
 				.getRoute("detail")
-				.attachPatternMatched(this._onPatternMatched, this)
+				.attachPatternMatched(this._onMatched, this);
 		},
-		_onPatternMatched: function(oEvent) {
-			Controller.prototype.onInit.apply(this, arguments)
-
-			const args = oEvent.getParameter("arguments")
+		_onMatched: function(oEvent) {
+			Log.info(this.getView().getControllerName(), "_onMatched");
+			var args = oEvent.getParameter("arguments");
 
 			this.getOwnerComponent()
 				.getModel()
 				.metadataLoaded()
-				.then(this._bindData.bind(this, args.id))
+				.then(this._bindData.bind(this, args.id));
 		},
 		_bindData: function(id) {
-			Log.info(this.getView().getControllerName(), "_bindData")
+			Log.info(this.getView().getControllerName(), "_bindData");
 
 			var sObjectPath = this.getOwnerComponent()
 				.getModel()
-				.createKey("Products", { ProductID: id })
+				.createKey("Products", { ProductID: id });
 
 			this.getView().bindElement({
 				path: "/" + sObjectPath,
@@ -36,31 +35,30 @@ sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
 				},
 				events: {
 					change: function() {
-						Log.info(this.getView().getControllerName(), "_bindData change")
-						this.getView().setBusy(false)
+						Log.info(this.getView().getControllerName(), "_bindData change");
+						this.getView().setBusy(false);
 					}.bind(this),
 					dataRequested: function() {
 						Log.info(
 							this.getView().getControllerName(),
 							"_bindData dataRequested"
-						)
-						this.getView().setBusy(true)
+						);
+						this.getView().setBusy(true);
 					}.bind(this),
 					dataReceived: function() {
 						Log.info(
 							this.getView().getControllerName(),
 							"_bindData dataReceived"
-						)
-						this.getView().setBusy(false)
+						);
+						this.getView().setBusy(false);
 						if (this.getView().getBindingContext() === null)
 							this.getOwnerComponent()
 								.getRouter()
 								.getTargets()
-								.display("notFound")
-						return
+								.display("notFound");
 					}.bind(this)
 				}
-			})
+			});
 		},
 		onPressSupplier: function(oEvent) {
 			Log.info(
@@ -70,15 +68,19 @@ sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
 						.getSource()
 						.getBindingContext()
 						.getObject().SupplierID
-			)
-			this.getOwnerComponent()
-				.getRouter()
-				.navTo("suppliers", {
-					id: oEvent
-						.getSource()
-						.getBindingContext()
-						.getObject().SupplierID
-				})
+			);
+
+			var oOwnerComponent = this.getOwnerComponent();
+			var oModel = oOwnerComponent.getModel();
+			var oBindingContext = oEvent.getSource().getBindingContext();
+			var sSupplierID = oBindingContext.getProperty("SupplierID");
+
+			oOwnerComponent.fireEvent("toSupplier", {
+					supplierID: sSupplierID,
+					supplierKey: encodeURIComponent("/" + oModel.createKey("Suppliers", {
+						SupplierID: sSupplierID
+					}))
+				});
 		},
 		onPressCategory: function(oEvent) {
 			Log.info(
@@ -88,15 +90,19 @@ sap.ui.define(["yelcho/reuse/BaseController", "sap/base/Log"], function(
 						.getSource()
 						.getBindingContext()
 						.getObject().CategoryID
-			)
-			this.getOwnerComponent()
-				.getRouter()
-				.navTo("categories", {
-					id: oEvent
-						.getSource()
-						.getBindingContext()
-						.getObject().CategoryID
-				})
+			);
+
+			var oOwnerComponent = this.getOwnerComponent();
+			var oModel = oOwnerComponent.getModel();
+			var oBindingContext = oEvent.getSource().getBindingContext();
+			var sCategoryID = oBindingContext.getProperty("CategoryID");
+
+			oOwnerComponent.fireEvent("toCategory", {
+					categoryID: sCategoryID,
+					categoryKey: encodeURIComponent("/" + oModel.createKey("Categories", {
+						CategoryID: sCategoryID
+					}))
+				});
 		}
-	})
-})
+	});
+});
